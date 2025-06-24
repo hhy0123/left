@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="product_registration.css" />
+    <title>상품등록</title>
+  </head>
+  <body>
+    <div>
+      <div class="top_box">
+        <button>&lt;</button>
+        <h2>상품 등록</h2>
+      </div>
+      <div class="container">
+        <input type="file" accept="image/*" /><br />
+        <label for="title">제목</label><br />
+        <input type="text" placeholder="글 제목" /><br />
+        <label for="product_info">상품 설명</label><br />
+        <input
+          id="p_description"
+          type="text"
+          placeholder="게시글 내용을 작성해 주세요.\n 신뢰할 수 있는 거래를 위해 자세히 적어주세요."
+        />
+        <div class="method">
+          <h3>거래 방식</h3>
+          <div id="return">
+            <hr />
+            <span>반품</span>
+            <button>가능</button>
+            <button>불가능</button>
+            <hr />
+          </div>
+          <div id="parcel">
+            <span>택배 거래</span>
+            <button>가능</button>
+            <button>불가능</button>
+            <hr />
+          </div>
+          <div id="direct">
+            <span>직거래</span>
+            <button>가능</button>
+            <button>불가능</button>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="regist_btn">상품 등록하기</button>
+  </body>
+  <script src="product_registration.js"></script>
+</html>
