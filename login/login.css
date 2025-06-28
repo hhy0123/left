@@ -1,0 +1,87 @@
+    body {
+    margin: 0;
+    background: #F9F9F9;
+    width: 100vw;
+    height: 100vh;
+    font-family: "ONE Mobile Title OTF", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .container {
+    width: 375px;
+    height: 812px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #D5D6D7;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+    }
+    .tab-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #D5D6D7;
+    box-sizing: border-box;
+    }
+    .tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #747474;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    }
+    .tab.active {
+    color: #0092FF;
+    border-bottom: 2px solid #0092FF;
+    font-weight: bold;
+    }
+    label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+    color: #303030;
+    margin-bottom: 8px;
+    }
+    input {
+    width: 100%;
+    height: 43px;
+    padding: 10px 8px;
+    margin-bottom: 24px;
+    border: 1px solid #D5D6D7;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: white;
+    box-sizing: border-box;
+    font-family: "ONE Mobile Title OTF", sans-serif;
+    font-weight: 400;
+    }
+    input::placeholder {
+    font-family: "ONE Mobile Title OTF", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    }
+    .button {
+    width: 100%;
+    padding: 16px;
+    background: #0092FF;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: auto;
+    box-sizing: border-box;
+    font-family: "ONE Mobile Title OTF", sans-serif;
+    }
