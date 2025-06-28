@@ -1,10 +1,8 @@
-//이전 페이지 버튼
 function backto() {
   window.history.back();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // === 거래 방식, 카테고리 버튼 선택 ===
   const toggleGroups = [
     { btns: document.querySelectorAll(".return-btn button"), name: "return" },
     {
@@ -18,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
+  // 버튼 토글
   toggleGroups.forEach(({ btns }) => {
     btns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -28,26 +27,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === 대표 이미지 업로드 ===
+  // 대표 이미지 미리보기
   const mainInput = document.getElementById("image-input");
-  const mainPreview = document.getElementById("default1-icon");
 
   mainInput.addEventListener("change", function (e) {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        mainPreview.src = e.target.result;
-        mainPreview.style.objectFit = "cover";
-        mainPreview.style.objectPosition = "center";
-        mainPreview.style.width = "100%";
-        mainPreview.style.height = "100%";
+        const uploadBox = document.querySelector(".image-upload-box");
+        uploadBox.innerHTML = "";
+
+        const preview = document.createElement("img");
+        preview.src = e.target.result;
+        preview.style =
+          "width:100%; height:100%; object-fit:cover; object-position:center;";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "×";
+        removeBtn.classList.add("remove-image-btn");
+
+        removeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          uploadBox.innerHTML = `
+            <img src="svg_file/plus.svg" alt="사진 첨부 아이콘" id="default1-icon" class="default-icon"/>
+            <input type="file" id="image-input" accept="image/*"><br/>
+          `;
+          document
+            .getElementById("image-input")
+            .addEventListener("change", arguments.callee);
+        });
+
+        uploadBox.appendChild(preview);
+        uploadBox.appendChild(removeBtn);
       };
       reader.readAsDataURL(file);
     }
   });
 
-  // === 서브 이미지 업로드 ===
+  // 서브 이미지 미리보기
   const subInputs = document.querySelectorAll(".sub-image-input");
   const subUploadBoxes = document.querySelectorAll(".sub-upload-box");
 
@@ -59,15 +77,31 @@ document.addEventListener("DOMContentLoaded", () => {
       if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-          uploadBox.innerHTML = `
-            <img 
-              src="${e.target.result}" 
-              alt="미리보기 이미지" 
-              style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-            <input type="file" class="sub-image-input" accept="image/*" style="display: none;" />
-          `;
-          const newInput = uploadBox.querySelector(".sub-image-input");
-          newInput.addEventListener("change", arguments.callee);
+          uploadBox.innerHTML = "";
+
+          const preview = document.createElement("img");
+          preview.src = e.target.result;
+          preview.style =
+            "width:100%; height:100%; object-fit:cover; object-position:center;";
+
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "×";
+          removeBtn.classList.add("remove-image-btn");
+
+          removeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            uploadBox.innerHTML = `
+              <img src="svg_file/plus.svg" class="sub-preview default-sub-icon" alt="추가 이미지 ${
+                index + 1
+              }" />
+              <input type="file" class="sub-image-input" accept="image/*" style="display: none;" />
+            `;
+            const newInput = uploadBox.querySelector(".sub-image-input");
+            newInput.addEventListener("change", arguments.callee);
+          });
+
+          uploadBox.appendChild(preview);
+          uploadBox.appendChild(removeBtn);
         };
         reader.readAsDataURL(file);
       }
@@ -79,37 +113,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  //form 식별값
-  const formBuy = "buy";
-
-  // === form 제출 ===
+  // 폼 제출
   const form = document.querySelector("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const formData = new FormData();
 
-    // 대표 이미지
-    const mainImageFile = mainInput.files[0];
-    if (mainImageFile) {
-      formData.append("mainImage", mainImageFile);
-    }
-
-    // 서브 이미지들
-    document.querySelectorAll(".sub-image-input").forEach((input, i) => {
-      if (input.files[0]) {
-        formData.append(`subImage${i + 1}`, input.files[0]);
-      }
-    });
-
-    // 텍스트 입력값
+    // 텍스트 값 수집
     formData.append("title", document.getElementById("title").value);
     formData.append("price", document.getElementById("price").value);
     formData.append("info", document.getElementById("info").value);
     formData.append("link", document.getElementById("link").value);
-    formData.append("formID", formBuy);
+    formData.append("formID", "buy");
 
-    // 버튼 선택값
     toggleGroups.forEach(({ btns, name }) => {
       const selected = Array.from(btns).find((btn) =>
         btn.classList.contains("selected")
@@ -117,13 +134,38 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append(name, selected ? selected.textContent.trim() : "");
     });
 
-    // 체크박스
     const priceCheck = document.querySelector("input[type='checkbox']");
     formData.append("priceSuggest", priceCheck.checked ? "yes" : "no");
 
-    // 콘솔 확인
+    // === 콘솔에 확인 ===
+    console.log("✅ [폼 내용]");
     for (let [key, value] of formData.entries()) {
-      console.log(key, ":", value);
+      console.log(`${key}: ${value}`);
     }
+
+    // === 로컬스토리지 저장 (key: buy1, buy2...) ===
+    let i = 1;
+    while (localStorage.getItem(`buy${i}`)) {
+      i++;
+    }
+
+    const storeData = {};
+    for (let [key, value] of formData.entries()) {
+      storeData[key] = value;
+    }
+
+    localStorage.setItem(`buy${i}`, JSON.stringify(storeData));
+    alert(`✅ 폼 데이터가 로컬스토리지에 저장되었습니다 (키: buy${i})`);
+
+    form.reset();
+    location.reload();
   });
+
+  // 서버용 fetch 예시 (비활성화)
+  /*
+  fetch("http://서버주소/upload", {
+    method: "POST",
+    body: formData
+  });
+  */
 });
