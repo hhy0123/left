@@ -79,7 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const formSell = "sell";
+  //form 식별값
+  const formBuy = "buy";
 
   // === form 제출 ===
   const form = document.querySelector("form");
@@ -106,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("price", document.getElementById("price").value);
     formData.append("info", document.getElementById("info").value);
     formData.append("link", document.getElementById("link").value);
-    formData.append("formID", formSell);
+    formData.append("formID", formBuy);
 
     // 버튼 선택값
     toggleGroups.forEach(({ btns, name }) => {
