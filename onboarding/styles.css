@@ -12,55 +12,6 @@
         box-sizing: border-box;
         }
 
-<<<<<<< Updated upstream
-    /* 온보딩 공통 스타일 */
-    body.onboarding {
-    background-color: #F9F9F9;
-    }
-
-    .onboarding-frame {
-    position: relative;
-    width: 375px;
-    height: 812px;
-    background: #fff; /* 필요하다면 배경 조정 */
-    border-radius: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    overflow: hidden;
-    }
-
-    /* 온보딩 이미지 */
-    .onboarding-image {
-    width: 100%;
-    flex: 1 1 50%;      /* 프레임 높이의 50%를 차지 */
-    object-fit: cover;
-    }
-
-    /* 텍스트 박스 */
-    .text-box {
-    flex: 1 1 40%;      /* 프레임 높이의 40%를 차지 */
-    background-color: white;
-    border-radius: 0;   /* 직각 처리 */
-    padding: 32px 24px;
-    width: 100%;
-    box-sizing: border-box;
-    color: #000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-    }
-/* 필요에 따라 높이 비율 조절 가능 */
-    .text-box h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 12px 0;
-    }
-=======
         /* 온보딩 1 스타일 */
         body.onboarding1 {
         background-color: #0092FF;
@@ -101,23 +52,30 @@
         .onboarding-frame {
         position: relative;
         width: 375px;
-        height: 816px;
-        background: linear-gradient(to bottom, #e3e3e3, #EAEAEB);
-        border-radius: 8px 8px 0 0;
+        height: 812px;
+        background: #fff; /* 필요하다면 배경 조정 */
+        border-radius: 0;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        padding: 0; /* 좌우 패딩 제거 */
+        padding: 0;
+        overflow: hidden;
+        }
+
+        /* 온보딩 이미지 */
+        .onboarding-image {
+        width: 100%;
+        flex: 1 1 50%;      /* 프레임 높이의 50%를 차지 */
+        object-fit: cover;
         }
 
         /* 텍스트 박스 */
         .text-box {
+        flex: 1 1 40%;      /* 프레임 높이의 40%를 차지 */
         background-color: white;
-        border-radius: 24px 24px 0 0;
+        border-radius: 0;   /* 직각 처리 */
         padding: 32px 24px;
         width: 100%;
-        height: 325px;
         box-sizing: border-box;
         color: #000;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -128,12 +86,14 @@
         text-align: left;
         }
 
+/* 필요에 따라 높이 비율 조절 가능 */
+
+
         .text-box h2 {
         font-size: 20px;
         font-weight: 700;
         margin: 0 0 12px 0;
         }
->>>>>>> Stashed changes
 
         .text-box p {
         font-size: 14px;
@@ -155,47 +115,6 @@
         cursor: pointer;
         }
 
-<<<<<<< Updated upstream
-    /* 오른쪽 아래 버튼 위치 */
-    .circle-btn-wrapper.right {
-    bottom: 60px;
-    right: 17px;
-    }
-
-    /* 왼쪽 위 버튼 위치 */
-    .circle-btn-wrapper.left {
-    top: 30px;
-    left: 20px;
-    }
-
-    /* 파란색 둥근 화살표 버튼 */
-    .circle-btn {
-    width: 48px;
-    height: 48px;
-    background-color: #0092FF;
-    border-radius: 50%;
-    border: none;
-    color: white;
-    font-size: 32px;
-    line-height: 48px;
-    text-align: center;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    cursor: pointer;
-    }
-        .circle-btn img.arrow-icon {
-    width: 24px;    /* 버튼 안에서 적당한 크기 */
-    height: 24px;
-    object-fit: contain;
-    display: block;
-    }
-
-=======
         /* 오른쪽 아래 둥근 원 위치 */
         .circle-btn-wrapper.right {
         bottom: 60px;
@@ -229,4 +148,3 @@
         cursor: pointer;
         }
 
->>>>>>> Stashed changes
