@@ -125,7 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("price", document.getElementById("price").value);
     formData.append("info", document.getElementById("info").value);
     formData.append("link", document.getElementById("link").value);
-    formData.append("formID", "sell");
+    formData.append("formID", "buy");
+    formData.append("status", "구매 중");
 
     toggleGroups.forEach(({ btns, name }) => {
       const selected = Array.from(btns).find((btn) =>
@@ -143,9 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(`${key}: ${value}`);
     }
 
-    // === 로컬스토리지 저장 (key: sell1, sell2...) ===
+    // === 로컬스토리지 저장 (key: buy1, buy2...) ===
     let i = 1;
-    while (localStorage.getItem(`sell${i}`)) {
+    while (localStorage.getItem(`buy${i}`)) {
       i++;
     }
 
@@ -154,8 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
       storeData[key] = value;
     }
 
-    localStorage.setItem(`sell${i}`, JSON.stringify(storeData));
-    alert(`✅ 폼 데이터가 로컬스토리지에 저장되었습니다 (키: sell${i})`);
+    localStorage.setItem(`buy${i}`, JSON.stringify(storeData));
+    alert(`✅ 폼 데이터가 로컬스토리지에 저장되었습니다 (키: buy${i})`);
 
     form.reset();
     location.reload();
