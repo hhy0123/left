@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="favorite.css" />
+    <title>찜</title>
+  </head>
+  <body>
+    <div class="top-title-div">
+      <p class="top-title">찜</p>
+    </div>
+    <div class="middle-text-div">
+      <span class="span1">찜한 상품이 없습니다</span>
+      <span class="span2">학교 친구들이 올린 상품을 구경해보세요:&#41;</span>
+      <button class="go-home-btn" onclick="location.href='main.html'">
+        홈으로
+      </button>
+    </div>
+    <nav class="bottom-nav">
+      <a href="#" class="nav-item" onclick="location.href='main.html'">
+        <img src="svg_file/home.svg" alt="홈 아이콘" />
+        <span>홈</span>
+      </a>
+      <a href="#" class="nav-item" onclick="location.href='search.html'">
+        <img src="svg_file/search.svg" alt="검색 아이콘" />
+        <span>검색</span>
+      </a>
+      <a
+        href="#"
+        class="nav-item active"
+        onclick="location.href='favorite.html'"
+      >
+        <img src="svg_file/favorite_border.svg" alt="찜 아이콘" />
+        <span>찜</span>
+      </a>
+      <a href="#" class="nav-item">
+        <img src="svg_file/person_2.svg" alt="프로필 아이콘" />
+        <span>프로필</span>
+      </a>
+    </nav>
+    <script src="favorite.js"></script>
+  </body>
+</html>
