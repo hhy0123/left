@@ -1,0 +1,248 @@
+@font-face {
+  font-family: "ONE-Mobile-Title";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sell-container,
+.buy-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-div {
+  position: relative;
+  margin: 1.62rem 0.5rem 1.25rem;
+  padding: 0.62rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-div img {
+  position: absolute;
+  left: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.search-div input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  width: 100%;
+}
+
+/* 중간 영역 */
+.middle-header-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+/* 버튼 컨테이너 */
+.buy-sell-btn-div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 버튼 기본 */
+.buyORsell {
+  font-family: "Pretendard-Regular", sans-serif;
+  font-size: 0.9rem;
+  width: 4.875rem;
+  height: 2.25rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 1rem;
+  border: 1px solid #d0d0d0;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+
+/* 선택된 버튼 */
+.buyORsell.active {
+  background-color: #0092ff;
+  border: none;
+  color: white;
+}
+
+/* 메뉴 아이콘 */
+.menu-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.registration-btn-div {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #0092ff;
+  color: white;
+  min-width: 12rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1500;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.registration-btn {
+  border: none;
+  background-color: #0092ff;
+  color: #f9f9f9;
+  text-align: center;
+  font-family: "ONE-Mobile-Title";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.registration-btn-div.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(50%);
+  pointer-events: none;
+}
+
+.sell-container,
+.buy-container {
+  margin-bottom: 5rem;
+}
+
+.product-container {
+  margin-left: 0.75rem;
+  margin-top: 1.19rem;
+}
+
+.haggwa-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-image {
+  display: flex;
+  width: 10.375rem;
+  height: 11.75rem;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
+  border: 1px solid #747474;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.77575rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.haggwa {
+  color: #303030;
+  text-align: center;
+  font-family: "Pretendard-Regular";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.37rem;
+}
+
+.title {
+  color: #303030;
+  font-family: "Pretendard-Regular";
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+#favorite-icon {
+  margin-top: 0.35rem;
+}
+
+.price {
+  color: #303030;
+  font-family: "Pretendard-Regular";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  margin-top: 0.38rem;
+}
+
+.product-image img {
+  color: #000;
+}
+
+/* 네비바 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #747474;
+  width: 2.25rem;
+  font-family: "Pretendard", sans-serif;
+  font-size: 0.75rem;
+}
+
+.nav-item img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.25rem;
+  filter: grayscale(100%) brightness(0.7); /* 더 흐리게 */
+}
+
+.nav-item.active {
+  color: #0092ff;
+}
+
+.nav-item.active img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(94%) saturate(2457%)
+    hue-rotate(185deg) brightness(102%) contrast(105%);
+}
