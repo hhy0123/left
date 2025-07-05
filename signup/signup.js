@@ -34,7 +34,18 @@
     const pw2 = document.getElementById("password2");
     if (pw1 !== pw2.value || !pw1) {
         pw2.classList.add("error");
+        alert("비밀번호가 일치하지 않거나 비밀번호를 입력하지 않았습니다.");
+        return;
     } else {
         pw2.classList.remove("error");
     }
+
+    const checkBtn = document.getElementById("check-btn");
+    if (checkBtn.textContent !== "사용가능") {
+        alert("사용 가능한 이메일인지 확인해주세요.");
+        return;
+    }
+
+    alert("회원가입이 완료되었습니다. 로그인 화면으로 이동합니다.");
+    window.location.href = "../login/login.html";
     }
