@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="category_modal.css" />
+    <title>메인</title>
+  </head>
+  <body>
+    <div class="search-div">
+      <img src="svg_file/search.svg" alt="돋보기 이미지" />
+      <input type="text" placeholder="검색" />
+    </div>
+    <div class="middle-header-div">
+      <div class="buy-sell-btn-div">
+        <button type="button" class="buyORsell active" value="sell">
+          팝니다
+        </button>
+        <button type="button" class="buyORsell" value="buy">삽니다</button>
+      </div>
+      <img src="svg_file/menu.svg" alt="메뉴 이미지" class="menu-icon" />
+    </div>
+    <!--상품 컨테이너-->
+    <div class="buy-container"></div>
+    <div class="sell-container"></div>
+    <div
+      class="registration-btn-div"
+      onclick="location.href='product_registration.html'"
+    >
+      <img src="svg_file/package.svg" alt="상품 등록버튼 아이콘" />
+      <button class="registration-btn">게시글 등록</button>
+    </div>
+    <nav class="bottom-nav">
+      <a href="#" class="nav-item active" onabort="location.href='main.html'">
+        <img src="svg_file/home.svg" alt="홈 아이콘" />
+        <span>홈</span>
+      </a>
+      <a href="#" class="nav-item" onclick="location.href='search.html'">
+        <img src="svg_file/search.svg" alt="검색 아이콘" />
+        <span>검색</span>
+      </a>
+      <a href="#" class="nav-item" onclick="location.href='favorite.html'">
+        <img src="svg_file/favorite_border.svg" alt="찜 아이콘" />
+        <span>찜</span>
+      </a>
+      <a href="#" class="nav-item">
+        <img src="svg_file/person_2.svg" alt="프로필 아이콘" />
+        <span>프로필</span>
+      </a>
+    </nav>
+    <!--카테고리 선택 모달-->
+    <div id="category-modal" class="category-modal hidden2">
+      <div class="category-backdrop">
+        <div class="category-panel">
+          <div class="category-header">
+            <span id="category-c-title">카테고리</span>
+            <button id="category-close">×</button>
+          </div>
+          <div class="category-options">
+            <label class="category-label"
+              ><input
+                type="radio"
+                name="category"
+                value="jeongong"
+                checked
+              />전공</label
+            ><br />
+            <label class="category-label"
+              ><input type="radio" name="category" value="gyoyang" />교양</label
+            ><br />
+            <label class="category-label"
+              ><input type="radio" name="category" value="jabhwa" />잡화</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="category_modal.js"></script>
+  </body>
+</html>

@@ -435,12 +435,11 @@ fieldset {
 .submit-btn {
   margin: 0 auto;
   display: flex;
-  width: 21.5625rem;
+  width: 10.3125rem;
   height: 2.75rem;
   padding: 0.5rem 0.625rem;
   justify-content: center;
   align-items: center;
-  gap: 0.625rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
   background: #0092ff;
@@ -452,18 +451,16 @@ fieldset {
   font-weight: 400;
   line-height: normal;
   border: none;
-  margin-bottom: 2.7rem;
 }
 
 .submit-btn:hover {
   margin: 0 auto;
   display: flex;
-  width: 21.5625rem;
+  width: 10.3125rem;
   height: 2.75rem;
   padding: 0.5rem 0.625rem;
   justify-content: center;
   align-items: center;
-  gap: 0.625rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
   background: #1d9dff;
@@ -475,18 +472,16 @@ fieldset {
   font-weight: 400;
   line-height: normal;
   border: none;
-  margin-bottom: 2.7rem;
 }
 
 .submit-btn:active {
   margin: 0 auto;
   display: flex;
-  width: 21.5625rem;
+  width: 10.3125rem;
   height: 2.75rem;
   padding: 0.5rem 0.625rem;
   justify-content: center;
   align-items: center;
-  gap: 0.625rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
   background: #35a7ff;
@@ -498,7 +493,6 @@ fieldset {
   font-weight: 400;
   line-height: normal;
   border: none;
-  margin-bottom: 2.7rem;
 }
 
 textarea#info {
@@ -567,8 +561,113 @@ input#link {
   line-height: normal;
 }
 
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.status-header button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.status-wrapper {
+  margin: 0 auto;
+  display: flex;
+  width: 23.4375rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.status-toggle-btn {
+  margin: 0 auto;
+  display: flex;
+  width: 10.3125rem;
+  height: 2.75rem;
+  padding: 0.5rem 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  border: 1px solid #0092ff;
+  color: #0092ff;
+  text-align: center;
+  font-family: "ONE-Mobile-Title";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #ffff;
+}
+
 /*버튼 눌리고 js 작동해야 효과 있는거(css가장 마지막에 와야함)*/
 .selected {
   background-color: #0092ff;
   color: white;
+}
+
+/* === 반응형 추가 === */
+@media (max-width: 600px) {
+  .top-div h2 {
+    font-size: 0.875rem;
+  }
+
+  .submit-btn {
+    font-size: 0.875rem;
+    height: 2.5rem;
+  }
+
+  .status-toggle-btn {
+    font-size: 0.875rem;
+    height: 2.5rem;
+  }
+
+  .image-upload-box {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .top-div h2 {
+    font-size: 1.2rem;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+  }
 }

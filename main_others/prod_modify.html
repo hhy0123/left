@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="buy_product_registration.css" />
-    <title>'삽니다'상품 등록</title>
+    <link rel="stylesheet" href="prod_modify.css" />
+    <link rel="stylesheet" href="status_modal.css" />
+    <title>상품 수정</title>
   </head>
   <body>
     <div class="top-div">
@@ -16,7 +17,7 @@
           onclick="backto()"
         />
       </div>
-      <h2><span style="color: #0092ff">'삽니다'</span> 상품 등록</h2>
+      <h2><span style="color: #0092ff">'팝니다'</span> 상품 수정하기</h2>
     </div>
     <form action="#">
       <div class="image-div">
@@ -104,12 +105,8 @@
             <input id="title" type="text" placeholder="글 제목" /><br />
           </div>
           <div class="price-div" style="margin-bottom: 0px">
-            <label for="price">구매 희망 가격 입력</label><br />
-            <input
-              id="price"
-              type="number"
-              placeholder="구매 희망 가격 입력"
-            /><br />
+            <label for="price">가격 입력</label><br />
+            <input id="price" type="number" placeholder="판매가격 입력" /><br />
           </div>
           <div class="checkbox-div">
             <input id="check-box" type="checkbox" />
@@ -120,7 +117,7 @@
             <label class="info-label" for="info">상품 설명</label><br />
             <textarea
               id="info"
-              placeholder="게시글 내용을 작성해 주세요.
+              placeholder="게시글 내용을 작성해 주세요
 신뢰할 수 있는 거래를 위해 자세히 적어주세요."
             ></textarea
             ><br />
@@ -179,7 +176,7 @@
         </div>
         <div class="link-div">
           <label class="link-label" for="link"
-            >판매자가 연락할 수 있도록 오픈채팅 링크를 입력해주세요.</label
+            >구매자가 연락할 수 있도록 오픈채팅 링크를 입력해주세요.</label
           ><br />
           <div class="link-icon-input-div">
             <img class="link-icon" src="svg_file/link.svg" alt="링크 이미지" />
@@ -187,8 +184,32 @@
           </div>
         </div>
       </fieldset>
-      <button class="submit-btn" type="submit">상품 등록하기</button>
+      <!-- 상태 변경 버튼 -->
+      <div class="status-wrapper">
+        <button type="button" class="status-toggle-btn">상태 변경</button>
+        <button class="submit-btn" type="submit">수정하기</button>
+      </div>
     </form>
+    <!-- 상태 변경 모달 -->
+    <div id="status-modal" class="status-modal hidden">
+      <div class="status-backdrop"></div>
+      <div class="status-panel">
+        <div class="status-header">
+          <span id="status-c-title">상태변경</span>
+          <button id="status-close">×</button>
+        </div>
+        <div class="status-options">
+          <label class="status-label"
+            ><input type="radio" name="status" value="ing" checked /> 판매
+            중</label
+          ><br />
+          <label class="status-label"
+            ><input type="radio" name="status" value="ed" /> 판매 완료</label
+          >
+        </div>
+      </div>
+    </div>
+    <script src="prod_modify.js"></script>
+    <script src="status_modal.js"></script>
   </body>
-  <script src="buy_product_regitstration.js"></script>
 </html>

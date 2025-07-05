@@ -147,6 +147,38 @@ fieldset {
   border: none;
 }
 
+.buy-sell-select-div {
+  color: #303030;
+  font-family: "ONE-Mobile-Title";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 auto;
+  display: flex;
+  width: 21.375rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 1.31rem; /* 다른 섹션과 동일한 하단 간격 */
+}
+
+#buy-sell-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d5d6d7;
+  border-radius: 0.625rem;
+  font-size: 1rem;
+  background-color: #ffff;
+  box-sizing: border-box;
+  color: #747474;
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .title-div {
   color: #303030;
   font-family: "ONE-Mobile-Title";

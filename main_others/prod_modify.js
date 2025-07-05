@@ -125,7 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("price", document.getElementById("price").value);
     formData.append("info", document.getElementById("info").value);
     formData.append("link", document.getElementById("link").value);
-    formData.append("formID", "sell");
+    formData.append("formID", document.getElementById("buy-sell-select").value);
+    formData.append("status", window.getStatusValue());
 
     toggleGroups.forEach(({ btns, name }) => {
       const selected = Array.from(btns).find((btn) =>
