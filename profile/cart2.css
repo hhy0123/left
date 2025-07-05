@@ -107,16 +107,16 @@
     transition: all 0.2s ease;
 
     /* 기본: 파란 배경 + 흰 글씨 + 테두리 없음 */
-    background-color: #0092FF;
-    color: #FFFFFF;
-    border: none;
+    background-color: #FFFFFF;
+    color: #303030;
+    border: 1px solid #EAEAEB;
     }
 
     /* active 버튼: 흰 배경 + 검정 글씨 + 회색 테두리 */
     .toggle-button.active {
-    background-color: #FFFFFF;
-    color: #303030;
-    border: 1px solid #EAEAEB;
+    background-color: #0092FF;
+    color: #FFFFFF;
+    border: none;
     }
 
     .item-list {
