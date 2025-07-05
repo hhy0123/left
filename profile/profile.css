@@ -1,0 +1,268 @@
+    html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #F9F9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    }
+
+    .profile-body {
+    background-color: #F9F9F9;
+    }
+
+    .profile-container {
+    position: relative;    /* 모달 위치의 기준 */
+    width: 375px;
+    height: 812px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;      /* 모달이 container 밖으로 넘치지 않게 */
+    }
+
+    /* 상단 헤더 */
+    .profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    position: relative;
+    /* border-bottom: none; ← 필요하면 유지 */
+    padding: 16px 0;   /* 위아래로 여유 추가 */
+    }
+
+    .back-button {
+    position: absolute;
+    top: 55%;
+    left: 18px;                     /* 왼쪽에 붙이기 */
+    transform: translateY(-50%); /* header 높이의 세로 중앙 */
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    }
+    /* 회색 원을 따로 div로 */
+    .back-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #D5D6D7;
+    border-radius: 50%;
+    position: absolute;
+    }
+
+    /* 화살표는 독립적으로 크기 조절 */
+    .back-arrow-img {
+    width: 18px;  /* 화살표 크기만 줄이기 가능 */
+    height: 18px;
+    position: absolute;
+    }
+
+
+    .header-title {
+    font-size: 16px;
+    color: #0092FF;
+    margin: 0;
+    }
+
+    .user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;     /* 좌우 24px 여백 추가 */
+    margin: 12px 16px 0;     /* 프로필과 사용자 정보 사이 여유 */
+    background: #F9F9F9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    }
+
+    .user-details p {
+    margin: 2px 0;
+    font-family: "ONE Mobile Title OTF";
+    font-size: 12px;
+    color: #747474;
+    }
+
+    .username {
+    color: #121111 !important;
+    font-family: "ONE Mobile Title OTF";
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    }
+
+    .edit-button {
+    font-size: 12px;
+    color: #747474;
+    background: none;
+    border: none;
+    cursor: pointer;
+    }
+
+    /* 메뉴 리스트 */
+    .menu-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-top: none;     /* 혹시 있을 수도 있는 상단 선 제거 */
+    border-bottom: none;  /* 혹시 있을 수도 있는 하단 선 제거 */
+    }
+
+    .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    text-decoration: none;
+    color: #303030;
+
+    border: none;             /* 모든 border 제거 */
+    border-bottom: none;      /* 항목 아래선 제거 */
+    box-shadow: none;         /* 그림자 제거 */
+    }
+    .menu-left {
+    display: flex;
+    align-items: center;
+    }
+
+    .menu-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    }
+
+    .menu-text {
+    font-size: 14px;
+    }
+
+    .arrow-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    }
+    /* 모달 오버레이 */
+    .modal-overlay {
+    position: absolute;              /* 프로필 컨테이너 기준으로! */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: flex-end;           /* 모달을 아래쪽에 붙이고 */
+    z-index: 999;
+    }
+    .modal-sheet {
+    width: 375px;
+    height: 420px;
+    background: var(--Neutral-100, #F9F9F9);
+    border-radius: 16px 16px 0 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;     /* 모달 전체 좌우 24px 여백 유지 */
+    gap: 16px;
+    overflow-y: auto;
+    margin-bottom: 60px;
+    }
+    .modal-header {
+    display: flex;
+    justify-content: space-between;  /* 다시 양 끝으로 */
+    align-items: center;
+    padding: 4px 0 4px 0;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--Neutral-200, #EAEAEB);
+    background: var(--Neutral-100, #F9F9F9);
+    width: 100%;
+    box-sizing: border-box;
+    }
+
+    .modal-title {
+    flex: 1;                      /* 왼쪽에서 가능한 공간 차지 */
+    font-weight: bold;
+    font-family: "ONE Mobile Title OTF";
+    font-size: 18px;
+    color: #0092FF;
+    margin: 8px 0 0 0;
+    }
+
+    .modal-close {
+    width: 24px;
+    height: 24px;
+    background: url('../svg_file/x표시.svg') no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    }
+    .modal-content label:first-of-type {
+    display: block;
+    padding-top: 8px; /* 선과 글자 사이 여유 */
+    margin-top: 4px;   /* 위쪽 공간 */
+    }
+    .modal-content label {
+    font-weight: bold;
+    font-family: "ONE Mobile Title OTF";
+    font-size: 12px;
+    margin: 12px 0 4px;
+    display: block;
+    }
+    .modal-content input {
+    width: 100%;
+    padding: 12px 16px;     /* 좌우 여백 추가: 기존 12px → 12px 16px */
+    border: 1px solid #ddd;
+    color: #747474;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: "ONE Mobile Title OTF";
+    margin-bottom: 12px;
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+    }
+        .modal-content select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    color: #747474;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: "ONE Mobile Title OTF";
+    margin-bottom: 12px;
+    box-sizing: border-box;
+
+    /* 커스텀 화살표 이미지 추가 */
+    appearance: none;                          /* 기본 화살표 제거 */
+    -moz-appearance: none;                     /* 파이어폭스 호환 */
+    -webkit-appearance: none;                  /* 사파리 호환 */
+    background: url('../svg_file/arrow-angle-right.svg') no-repeat right 16px center; /* 위치 조정 */
+    background-size: 20px 20px;                /* 아이콘 크기 */
+    }
+    .modal-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #0092FF;
+    color: #fff;
+    font-family: "ONE Mobile Title OTF";
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    }
+
+    .modal-error {
+    color: red;
+    font-family: "ONE Mobile Title OTF";
+    font-size: 13px;
+    margin: 4px 0;
+    text-align: center;
+    }
+

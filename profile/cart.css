@@ -1,0 +1,235 @@
+    html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #F9F9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    }
+
+    .registered-body {
+    background-color: #F9F9F9;
+    }
+
+    .registered-container {
+    width: 375px;
+    height: 812px;
+    background-color: #FFFFFF;
+    font-family: "ONE Mobile Title OTF";
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .registered-header {
+    position: relative;
+    height: 60px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 텍스트 중앙정렬 */
+    padding-top: 10px;        /* 상단 여백 추가 (원하는 만큼 숫자 조절 가능) */
+    }
+
+    .back-button {
+    position: absolute;  /* header 기준으로 위치 고정 */
+    left: 16px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .back-circle-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    }
+
+    .back-icon {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    }
+
+    .back-arrow-img {
+    position: absolute;
+    width: 24px;           /* 화살표 크기 원 비율에 맞게 조절 */
+    height: 24px;
+    top: 40%;              /* 원의 정중앙 기준 */
+    left: 50%;
+    transform: translate(-50%, -20%);  /* 중앙 정렬 */
+    object-fit: contain;
+    }
+    .header-title {
+    font-size: 16px;
+    color: #303030;
+    font-family: "ONE Mobile Title OTF";
+    margin: 0 auto;        /* header 중앙에 배치 */
+    font-weight: 800;
+    }
+    .toggle-section {
+    display: flex;
+    justify-content: flex-start;    /* 버튼을 왼쪽 정렬 */
+    gap: 8px;
+    padding: 12px 16px;             /* 왼쪽 여백 등 */
+    background-color: #FFFFFF;
+    margin-top: 16px;               /* 헤더와의 간격 추가 */
+    }
+
+    .toggle-button {
+    display: flex;
+    justify-content: center;           /* 가로 중앙 정렬 */
+    align-items: center;               /* 세로 중앙 정렬 */
+    width: 78px;                       /* 적당한 너비 */
+    height: 36px;                      /* 적당한 높이 */
+    padding: 0;                        /* padding 대신 height로 맞추기 */
+    border-radius: 20px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid #EAEAEB;
+    background-color: #FFFFFF;
+    color: #303030;
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 40px;                 /* 버튼 높이와 맞춤 */
+    text-align: center;                /* 혹시 모를 텍스트 위치 보정 */
+    transition: all 0.2s ease;
+    }
+
+    .toggle-button.active {
+    border: none;
+    background-color: #0092FF;
+    color: #FFFFFF;
+    }
+
+    /* 호버 효과 */
+    .toggle-button:hover:not(.active) {
+    background-color: #F2F2F2;
+    }
+    .item-list {
+    flex-grow: 1;
+    padding: 12px;
+    overflow-y: auto;
+    }
+
+    .item-card {
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    }
+
+    .item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    }
+
+    .item-image {
+    width: 72px;
+    height: 72px;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    background-image: url('../svg_file/Placeholder.svg'); /* 이미지 경로를 네 파일 경로에 맞춰 수정! */
+    background-size: cover;       /* 이미지가 div를 꽉 채우도록 */
+    background-position: center;  /* 가운데 정렬 */
+    }
+
+    .item-description p {
+    margin: 2px 0;
+    }
+
+    .item-category {
+    font-size: 12px;
+    color: #303030;
+    font-weight: normal;
+    }
+
+    .item-title {
+    font-size: 14px;
+    color: #303030;
+    font-weight: bold; /* 굵게 추가 */
+    }
+
+    .item-price {
+    font-size: 14px;
+    color: #303030;
+    }
+
+    .item-actions {
+    width: 100%;              /* 부모(.registered-container)의 너비에 맞추기 */
+    max-width: 375px;         /* 카드와 동일한 최대폭으로 제한 */
+    margin: 12px auto 24px;   /* 위-좌우-아래 간격, auto로 가운데 정렬 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    }
+
+    .item-status {
+    background-color: #0092FF;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 8px;
+    font-weight: 400;
+    border-radius: 4px;
+    white-space: nowrap;
+    }
+    .item-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 111.02px;
+    height: 32px;             /* 고정 유지 */
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: "ONE Mobile Title OTF";
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid #D5D6D7;
+    background-color: #FFFFFF;
+    color: #303030;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;          /* 한 줄 고정 */
+    overflow: hidden;             /* 넘치면 잘리게 */
+    text-overflow: ellipsis;      /* 넘치면 ... 표시 */
+    transition: all 0.2s ease;
+    }
+
+    .item-button:focus {
+    outline: none;
+    }
+    .item-button.active {
+    border: none;
+    background-color: #0092FF;
+    color: #FFFFFF;
+    }
+
+    /* 판매완료 상태에도 파란 배경을 유지하면서 날짜 표시 */
+    .item-button.sold {
+    border: none;
+    background-color: #0092FF;
+    color: #FFFFFF;
+    }
+    .sold-date {
+    font-size: 10px;  /* 날짜만 작게 표시 */
+    }
+
