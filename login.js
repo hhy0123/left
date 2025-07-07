@@ -17,11 +17,8 @@ async function login() {
       body: JSON.stringify({ email, password }),
     });
 
-    // authorization 헤더에서 토큰 추출
-    let accessToken = response.headers.get("access");
-    if (accessToken && accessToken.startsWith("Bearer ")) {
-      accessToken = accessToken.slice(7); // "Bearer " 제거
-    }
+    // 헤더 이름이 'access'로 내려오는 경우
+    const accessToken = response.headers.get("access");
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -29,9 +26,10 @@ async function login() {
     }
 
     if (!accessToken) {
-      throw new Error("authorization 헤더에 accessToken이 없습니다.");
+      throw new Error("access 헤더에 accessToken이 없습니다.");
     }
 
+    // accessToken을 localStorage에 저장
     localStorage.setItem("accessToken", accessToken);
 
     alert("로그인 성공!");
