@@ -8,14 +8,14 @@ async function login() {
   }
 
   try {
-    const response = await fetch("https://likelion.lefteushop.work/eushop/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
-    });
+  const response = await fetch("https://likelion.lefteushop.work/eushop/login", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "email": email,
+      "password": password
+    }
+  });
 
     // 모든 응답 헤더 콘솔에 출력
     for (let [key, value] of response.headers.entries()) {
