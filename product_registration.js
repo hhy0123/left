@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
       returnable: returnable,
       delivery: delivery,
       directTrade: directTrade,
-      ContactLink: contactLink,
+      contactLink: contactLink,
       introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
     };
