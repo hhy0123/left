@@ -1,41 +1,57 @@
+    /* 기본 리셋 */
+    * {
+    box-sizing: border-box;
+    }
+
     html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     font-family: Arial, sans-serif;
     background-color: #F9F9F9;
     display: flex;
     justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
+    align-items: flex-start; /* 상단 정렬 */
+    padding: 16px 0;
     }
 
     .registered-body {
     background-color: #F9F9F9;
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     }
 
     .registered-container {
-    width: 375px;
-    height: 812px;
+    width: 100%;
+    max-width: 375px;
+    min-height: 812px;
     background-color: #FFFFFF;
-    font-family: "ONE Mobile Title OTF";
+    font-family: "ONE Mobile Title OTF", Arial, sans-serif;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
     }
+
+    /* 헤더 */
     .registered-header {
     position: relative;
     height: 60px;
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    justify-content: center; /* 텍스트 중앙정렬 */
-    padding-top: 10px;        /* 상단 여백 추가 (원하는 만큼 숫자 조절 가능) */
+    justify-content: center;
+    padding-top: 10px;
+    flex-shrink: 0;
     }
 
     .back-button {
-    position: absolute;  /* header 기준으로 위치 고정 */
+    position: absolute;
     left: 16px;
     width: 40px;
     height: 40px;
@@ -64,40 +80,31 @@
     object-fit: contain;
     }
 
-    .back-arrow-img {
-    position: absolute;
-    width: 24px;           /* 화살표 크기 원 비율에 맞게 조절 */
-    height: 24px;
-    top: 40%;              /* 원의 정중앙 기준 */
-    left: 50%;
-    transform: translate(-50%, -20%);  /* 중앙 정렬 */
-    object-fit: contain;
-    }
     .header-title {
     font-size: 16px;
     color: #303030;
-    font-family: "ONE Mobile Title OTF";
-    margin: 0 auto;        /* header 중앙에 배치 */
     font-weight: 800;
+    margin: 0 auto;
     }
+
+    /* 토글 버튼 */
     .toggle-section {
     display: flex;
-    justify-content: flex-start;    /* 버튼을 왼쪽 정렬 */
+    justify-content: flex-start;
     gap: 8px;
-    padding: 12px 16px;             /* 왼쪽 여백 등 */
+    padding: 12px 16px;
     background-color: #FFFFFF;
-    margin-top: 16px;               /* 헤더와의 간격 추가 */
+    margin-top: 16px;
     }
 
     .toggle-button {
     display: flex;
-    justify-content: center;           /* 가로 중앙 정렬 */
-    align-items: center;               /* 세로 중앙 정렬 */
-    width: 78px;                       /* 적당한 너비 */
-    height: 36px;                      /* 적당한 높이 */
-    padding: 0;                        /* padding 대신 height로 맞추기 */
+    justify-content: center;
+    align-items: center;
+    width: 78px;
+    height: 36px;
     border-radius: 20px;
-    font-family: Pretendard;
+    font-family: Pretendard, Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
     border: 1px solid #EAEAEB;
@@ -105,8 +112,8 @@
     color: #303030;
     cursor: pointer;
     box-sizing: border-box;
-    line-height: 40px;                 /* 버튼 높이와 맞춤 */
-    text-align: center;                /* 혹시 모를 텍스트 위치 보정 */
+    line-height: 40px;
+    text-align: center;
     transition: all 0.2s ease;
     }
 
@@ -116,16 +123,18 @@
     color: #FFFFFF;
     }
 
-    /* 호버 효과 */
     .toggle-button:hover:not(.active) {
     background-color: #F2F2F2;
     }
+
+    /* 아이템 리스트 */
     .item-list {
     flex-grow: 1;
-    padding: 12px;
+    padding: 12px 16px;
     overflow-y: auto;
     }
 
+    /* 아이템 카드 */
     .item-card {
     background-color: #F9F9F9;
     border-radius: 8px;
@@ -144,9 +153,9 @@
     height: 72px;
     background-color: #F9F9F9;
     border-radius: 8px;
-    background-image: url('../svg_file/Placeholder.svg'); /* 이미지 경로를 네 파일 경로에 맞춰 수정! */
-    background-size: cover;       /* 이미지가 div를 꽉 채우도록 */
-    background-position: center;  /* 가운데 정렬 */
+    background-image: url('../svg_file/Placeholder.svg');
+    background-size: cover;
+    background-position: center;
     }
 
     .item-description p {
@@ -161,8 +170,8 @@
 
     .item-title {
     font-size: 14px;
+    font-weight: bold;
     color: #303030;
-    font-weight: bold; /* 굵게 추가 */
     }
 
     .item-price {
@@ -170,66 +179,136 @@
     color: #303030;
     }
 
+    /* 액션 버튼 */
     .item-actions {
-    width: 100%;              /* 부모(.registered-container)의 너비에 맞추기 */
-    max-width: 375px;         /* 카드와 동일한 최대폭으로 제한 */
-    margin: 12px auto 24px;   /* 위-좌우-아래 간격, auto로 가운데 정렬 */
+    width: 100%;
+    max-width: 375px;
+    margin: 12px auto 24px;
     display: flex;
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
     }
 
-    .item-status {
-    background-color: #0092FF;
-    color: #fff;
-    font-size: 12px;
-    padding: 6px 8px;
-    font-weight: 400;
-    border-radius: 4px;
-    white-space: nowrap;
-    }
     .item-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 111.02px;
-    height: 32px;             /* 고정 유지 */
+    flex-shrink: 0;
+    width: 105px;
+    height: 36px; /* 터치 편하게 키움 */
     padding: 4px 10px;
-    font-size: 12px;
-    font-family: "ONE Mobile Title OTF";
+    font-size: 14px;
+    font-family: "ONE Mobile Title OTF", Arial, sans-serif;
     font-weight: bold;
     border-radius: 8px;
     border: 1px solid #D5D6D7;
     background-color: #FFFFFF;
     color: #303030;
     cursor: pointer;
-    flex-shrink: 0;
     box-sizing: border-box;
     line-height: 1.2;
     text-align: center;
-    white-space: nowrap;          /* 한 줄 고정 */
-    overflow: hidden;             /* 넘치면 잘리게 */
-    text-overflow: ellipsis;      /* 넘치면 ... 표시 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: all 0.2s ease;
     }
 
     .item-button:focus {
     outline: none;
     }
+
     .item-button.active {
     border: none;
     background-color: #0092FF;
     color: #FFFFFF;
     }
 
-    /* 판매완료 상태에도 파란 배경을 유지하면서 날짜 표시 */
+    /* 판매완료 상태 버튼 스타일 */
     .item-button.sold {
     border: none;
     background-color: #0092FF;
     color: #FFFFFF;
     }
+
     .sold-date {
-    font-size: 10px;  /* 날짜만 작게 표시 */
+    font-size: 10px;
     }
 
+    .hidden {
+    display: none;
+    }
+
+    /* 커스텀 confirm 모달 */
+    #custom-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    }
+
+    .confirm-box {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    min-width: 260px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirm-box p {
+    margin: 0;
+    font-size: 15px;
+    text-align: center;
+    color: #303030;
+    }
+
+    .confirm-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    }
+
+    .confirm-buttons button {
+    padding: 6px 16px;
+    border: 1px solid #999;
+    background: #f9f9f9;
+    color: #303030;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: "ONE Mobile Title OTF", Arial, sans-serif;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+    }
+
+    .confirm-buttons button:hover {
+    background: #e0e0e0;
+    }
+
+    /* 미디어 쿼리 */
+    /* 화면 768px 이상 */
+    @media (min-width: 768px) {
+    body, .registered-body {
+        padding: 40px 0;
+    }
+    .registered-container {
+        max-width: 480px;
+        min-height: 700px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    }
+    .item-button {
+        width: 140px;
+        height: 42px;
+        font-size: 16px;
+    }
+    .toggle-button {
+        width: 120px;
+        height: 44px;
+        font-size: 18px;
+    }
+    }
