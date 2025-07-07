@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(
-        "https://leftlion.netlify.app//eushop/image/upload",
+        "https://likelion.lefteushop.work/eushop/image/upload",
         {
           method: "POST",
           body: formData,
