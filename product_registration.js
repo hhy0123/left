@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           method: "POST",
           headers: {
-            Authorization: accessToken, // accessToken을 사용!
+            access: accessToken,
           },
           body: formData,
           credentials: "include",
