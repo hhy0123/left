@@ -163,8 +163,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.77575rem;
-  flex: 1 0 0;
   align-self: stretch;
 }
 
