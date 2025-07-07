@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(
-        "https://leftlion.netlify.app//eushop/image/upload",
+        "https://leftlion.netlify.app/eushop/image/upload",
         {
           method: "POST",
           headers: {
