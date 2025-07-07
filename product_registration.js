@@ -212,14 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
       isReturnable: isReturnable,
       isDelivery: isDelivery,
       isDirectTrade: isDirectTrade,
-      contactLink: contactLink,
+      ContactLink: contactLink,
       postType: postType,
       postStatus: postStatus,
       introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
     };
-
-    console.log("게시글 데이터:", postData);
 
     // 게시글 등록 요청
     fetch("https://likelion.lefteushop.work/eushop/posts/create", {
