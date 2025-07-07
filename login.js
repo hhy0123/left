@@ -28,19 +28,6 @@ async function login() {
     }
 
     // 🔍 서버 응답을 text로 먼저 읽고 JSON 파싱 시도
-
-    if (!rawText) {
-      throw new Error("서버에서 응답이 비어 있습니다.");
-    }
-
-    let data;
-    try {
-      data = JSON.parse(rawText);
-    } catch (parseError) {
-      console.error("JSON 파싱 실패, 응답 내용:", rawText);
-      throw new Error("서버 응답이 올바른 JSON 형식이 아닙니다.");
-    }
-
     const accessToken = data.accessToken || data.token;
     if (!accessToken) {
       throw new Error("accessToken이 응답에 없습니다.");
