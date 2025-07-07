@@ -30,22 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageInput = document.getElementById("imageInput");
   const mainImage = document.getElementById("mainImage");
   const subImages = document.getElementById("subImages");
-  const accessToken = localStorage.getItem("accessToken");
 
   let imageURLs = [];
 
   mainImage.addEventListener("click", () => imageInput.click());
 
+  const accessToken = localStorage.getItem("accessToken");
+
   imageInput.addEventListener("change", async () => {
     const selected = Array.from(imageInput.files);
 
-    if (imageURLs.length + selected.length > 5) {
+    // 예: 이미지 5장 제한 등 체크
+    if (selected.length > 5) {
       alert("이미지는 최대 5장까지 업로드할 수 있습니다.");
       return;
     }
 
+    // FormData에 파일 담기
     const formData = new FormData();
-    selected.forEach((file) => formData.append("upload", file));
+    selected.forEach((file) => formData.append("upload", file)); // 'upload'는 서버 요구 필드명
 
     try {
       const res = await fetch(
@@ -53,47 +56,40 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           method: "POST",
           headers: {
-            access: accessToken,
+            access: accessToken, // 서버가 요구하는 헤더명 (예: Authorization이 아닐 수도 있음)
+            // Content-Type은 FormData 사용 시 직접 지정하지 않음!
           },
           body: formData,
-          credentials: "include",
+          credentials: "include", // 필요시
         }
       );
 
       if (!res.ok) {
-        let errorBody = {};
-        try {
-          errorBody = await res.json();
-        } catch {}
-        if (res.status === 404 && errorBody.code === "User not found") {
-          alert("유저를 찾을 수 없음");
-        } else if (
-          res.status === 404 &&
-          errorBody.code === "review not found"
-        ) {
-          alert("리뷰를 찾을 수 없음");
-        } else if (res.status === 401 && errorBody.code === "unauthorized") {
-          alert("리소스에 대한 액세스 권한이 없음");
-        } else if (res.status === 500 && errorBody.code === "DB error") {
-          alert("DB 수정 실패");
-        } else {
-          alert("알 수 없는 오류가 발생했습니다.");
-        }
+        const errorBody = await res.json().catch(() => ({}));
+        alert("이미지 업로드 실패: " + (errorBody.message || res.status));
         throw new Error(`HTTP ${res.status} - ${errorBody.code}`);
       }
 
-      const result = await res.json(); // { urls: [...] }
-      const newURLs = result.urls || [];
+      // 서버 응답 파싱
+      const result = await res.json();
+      const introImgUrl = result.introImgUrl;
+      const imgUrls = result.imgUrls;
 
-      imageURLs = imageURLs.concat(newURLs).slice(0, 5);
-      updatePreview();
-      alert("✅ [200 OK] 이미지 업로드 성공");
+      // 미리보기 등 활용 예시
+      if (introImgUrl) {
+        document.getElementById("mainImage").src = introImgUrl;
+      }
+      // imgUrls 배열을 썸네일 등으로 활용
+      updatePreview(imgUrls);
+
+      alert("✅ 이미지 업로드 성공");
     } catch (err) {
       console.error("업로드 실패:", err);
-      alert("업로드 실패");
+      alert("업로드 실패: " + err.message);
     }
   });
-  // ✅ 이미지 삭제 함수 (서버로 DELETE 요청)
+
+  // 이미지 삭제 함수 (서버로 DELETE 요청)
   async function deleteImageFromServer(url) {
     try {
       const res = await fetch("/delete", {
@@ -104,10 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ url }),
       });
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const result = await res.json();
       if (result.success) return true;
       else throw new Error("삭제 실패");
@@ -198,18 +191,13 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     // 폼 요소 값 불러오기
-    // 1. 단순한 input 값들
     const title = document.querySelector("#title").value;
     const info = document.querySelector("#info").value;
     const price = Number(document.querySelector("#price").value);
     const postType = document.querySelector("#buy-sell-select").value;
     const contactLink = document.querySelector("#link").value;
-
-    // 2. category: 선택된 버튼 (class="category selected"로 가정)
     const selectedCategory =
       document.querySelector(".category.selected")?.value || null;
-
-    // 3. 거래 방식 (class에 selected가 붙은 버튼 값 가져오기)
     const returnable =
       document.querySelector(".return.selected")?.value === "true";
     const delivery =
@@ -217,41 +205,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const directTrade =
       document.querySelector(".direct.selected")?.value === "true";
 
-    // 4. 이미지 URL 추가
-    postData.introImgUrl = imageURLs[0] || null; // 대표 이미지 (없으면 null)
-    postData.imgUrls = imageURLs; // 전체 이미지 배열
-
     const postData = {
-      title: title,
+      title,
       content: info,
-      price: price,
+      price,
       category: selectedCategory,
-      postType: postType,
-      returnable: returnable,
-      delivery: delivery,
-      directTrade: directTrade,
-      contactLink: contactLink,
-      // ✅ 이미지 추가
+      postType,
+      returnable,
+      delivery,
+      directTrade,
+      contactLink,
       introImgUrl: imageURLs[0] || null,
       imgUrls: imageURLs,
     };
 
-    // 5. 콘솔 출력
-    console.log(JSON.stringify(postData, null, 2));
-
-    // 6. fetch로 서버 전송
+    // 게시글 등록 요청
     fetch("https://likelion.lefteushop.work/eushop/posts/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        access: accessToken, // 서버 요구 헤더명
       },
       body: JSON.stringify(postData),
+      credentials: "include",
     })
       .then(async (res) => {
         const responseBody = await res.json();
 
         if (!res.ok) {
-          // HTTP 상태에 따라 에러 메시지 커스터마이징
           switch (res.status) {
             case 401:
               alert("⚠️ 접근 권한이 없습니다. 로그인 후 다시 시도하세요.");
@@ -271,17 +252,14 @@ document.addEventListener("DOMContentLoaded", () => {
             default:
               alert("⚠️ 알 수 없는 오류 발생");
           }
-
           throw new Error(`서버 응답 실패: ${res.status}`);
         }
 
-        // 성공 처리
         alert("✅ 게시글이 성공적으로 등록되었습니다!");
-        console.log("서버 응답:", responseBody);
-        // 페이지 이동
         window.location.href = "main.html";
       })
       .catch((err) => {
+        alert("전송 실패: " + err.message);
         console.error("전송 실패:", err);
       });
   });
