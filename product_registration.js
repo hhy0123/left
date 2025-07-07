@@ -211,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
       isReturnable: isReturnable,
       isDelivery: isDelivery,
       isDirectTrade: isDirectTrade,
-      postType: postType,
       contactLink: contactLink,
+      postType: postType,
       introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
     };
