@@ -206,15 +206,15 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".direct.selected")?.value === "true";
 
     const postData = {
-      title,
+      title: title,
       content: info,
-      price,
+      price: price,
       category: selectedCategory,
-      postType,
-      returnable,
-      delivery,
-      directTrade,
-      contactLink,
+      postType: postType,
+      returnable: returnable,
+      delivery: delivery,
+      directTrade: directTrade,
+      contactLink: contactLink,
       introImgUrl: imageURLs[0] || null,
       imgUrls: imageURLs,
     };
