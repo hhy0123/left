@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSearchHistory();
 
     try {
-      const res = await fetch(`/eushop/list?keyword=${keyword}`);
+      const res = await fetch(
+        `https://likelion.lefteushop.work/eushop/list?keyword=${keyword}`
+      );
 
       if (!res.ok) {
         const errorResponse = await res.json().catch(() => ({}));
