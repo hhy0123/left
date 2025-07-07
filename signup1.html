@@ -1,37 +1,51 @@
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입/로그인 탭 UI</title>
     <link rel="stylesheet" href="signup.css" />
-    </head>
-    <body>
+  </head>
+  <body>
     <div class="container">
-    <div class="tab-container">
-    <div class="tab" onclick="location.href='../login/login.html'">로그인</div>
-    <div class="tab active" onclick="location.href='../signup/signup1.html'">회원가입</div>
-    </div>
-
-        <label for="email">학교 이메일 입력</label>
-        <div class="email-check-container">
-        <input type="email" id="email" placeholder="example@g.eulji.ac.kr" />
-        <button class="check-button" id="check-btn" onclick="checkEmail()">중복확인</button>
+      <div class="tab-container">
+        <div class="tab" onclick="location.href='login.html'">로그인</div>
+        <div class="tab active" onclick="location.href='signup1.html'">
+          회원가입
         </div>
-        <div id="email-error" class="error-text"></div>
+      </div>
 
-        <label for="nickname">닉네임</label>
-        <input type="text" id="nickname" placeholder="닉네임을 입력해주세요" />
+      <label for="email">학교 이메일 입력</label>
+      <div class="email-check-container">
+        <input type="email" id="email" placeholder="example@g.eulji.ac.kr" />
+        <button class="check-button" id="check-btn" onclick="checkEmail()">
+          중복확인
+        </button>
+      </div>
+      <div id="email-error" class="error-text"></div>
 
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" placeholder="영/숫자 포함 12자리 이내" />
+      <label for="nickname">닉네임</label>
+      <input type="text" id="nickname" placeholder="닉네임을 입력해주세요" />
 
-        <label for="password2">비밀번호 재입력</label>
-        <input type="password" id="password2" placeholder="위 비밀번호와 일치한 비밀번호를 입력해주세요" />
+      <label for="password">비밀번호</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="영/숫자 포함 12자리 이내"
+      />
 
-        <label for="major">학과 선택</label>
-        <select id="major" required>
-        <option value="" disabled selected hidden>학과/학부를 선택하세요</option>
+      <label for="password2">비밀번호 재입력</label>
+      <input
+        type="password"
+        id="password2"
+        placeholder="위 비밀번호와 일치한 비밀번호를 입력해주세요"
+      />
+
+      <label for="major">학과 선택</label>
+      <select id="major" required>
+        <option value="" disabled selected hidden>
+          학과/학부를 선택하세요
+        </option>
         <option>첨단학부</option>
         <option>자연계열학부</option>
         <option>인문사회계열학부</option>
@@ -58,11 +72,11 @@
         <option>유아교육학과</option>
         <option>아동학과</option>
         <option>빅데이터의료융합학과</option>
-        </select>
+      </select>
 
-        <div class="button" onclick="checkPasswords()">가입하기</div>
+      <div class="button" onclick="checkPasswords()">가입하기</div>
     </div>
 
     <script src="signup.js"></script>
-    </body>
-    </html>
+  </body>
+</html>
