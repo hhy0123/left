@@ -230,7 +230,17 @@ document.addEventListener("DOMContentLoaded", () => {
       credentials: "include",
     })
       .then(async (res) => {
-        const responseBody = await res.json();
+        // 응답의 Content-Type 확인
+        const contentType = res.headers.get("Content-Type");
+        let responseBody;
+
+        if (contentType && contentType.includes("application/json")) {
+          // ✅ JSON이면 json으로 파싱
+          responseBody = await res.json();
+        } else {
+          // ❗ 텍스트(HTML 또는 일반 문자열)면 text로 파싱
+          responseBody = await res.text();
+        }
 
         if (!res.ok) {
           switch (res.status) {
