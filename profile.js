@@ -111,8 +111,8 @@ async function submitEdit() {
 function logout() {
   localStorage.removeItem("accessToken");
 
-  fetch("https://likelion.lefteushop.work/eushop/logout", {
-    method: "POST",
+  fetch("https://likelion.lefteushop.work//eushop/profile", {
+    method: "GET",
     credentials: "include",
   })
     .then((res) => {
