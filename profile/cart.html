@@ -2,7 +2,7 @@
     <html lang="ko">
     <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=375, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>등록한 상품</title>
     <link rel="stylesheet" href="cart.css">
     </head>
@@ -56,6 +56,15 @@
             <button class="item-button">삭제하기</button>
         </div>
         </section>
+    </div>
+    <!-- 커스텀 confirm 모달 -->
+<!-- 판매완료 확인 모달 -->
+    <div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); justify-content:center; align-items:center;">
+    <div style="background:#fff; padding:20px; border-radius:8px; text-align:center; width:300px;">
+        <p id="confirmText">정말 판매완료로 변경하시겠습니까?</p>
+        <button onclick="confirmOk()">확인</button>
+        <button onclick="confirmCancel()">취소</button>
+    </div>
     </div>
 
     <script src="cart.js"></script>

@@ -1,10 +1,26 @@
+    let currentButton = null;  // 클릭한 버튼 저장용
+
     function markAsSold(button) {
-    if (button.textContent.includes('판매완료')) return;
+    if(button.textContent.includes('판매완료')) return;
 
-    const confirmPurchase = window.confirm("정말 판매완료로 변경하시겠습니까?");
-    if (!confirmPurchase) return;
+    currentButton = button;
+    document.getElementById('confirmModal').style.display = 'flex';
+    }
 
-    button.textContent = "판매완료";
-    button.classList.remove('active');
-    button.classList.add('sold');
+    function confirmOk() {
+    if(!currentButton) return;
+    currentButton.textContent = '판매완료';
+    currentButton.classList.remove('active');
+    currentButton.classList.add('sold');
+
+    closeModal();
+    }
+
+    function confirmCancel() {
+    closeModal();
+    }
+
+    function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+    currentButton = null;
     }

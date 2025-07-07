@@ -1,47 +1,55 @@
     html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     font-family: Arial, sans-serif;
     background-color: #F9F9F9;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* 상단 정렬 */
+    padding: 16px 0;
     box-sizing: border-box;
     }
 
     .profile-body {
     background-color: #F9F9F9;
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     }
 
     .profile-container {
-    position: relative;    /* 모달 위치의 기준 */
-    width: 375px;
-    height: 812px;
+    position: relative;
+    width: 100%;
+    max-width: 375px;
+    min-height: 812px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    overflow: hidden;      /* 모달이 container 밖으로 넘치지 않게 */
+    overflow: hidden;
+    border-radius: 10px;
     }
 
-    /* 상단 헤더 */
+    /* 헤더 패딩 조정 */
     .profile-header {
+    height: 60px;
+    padding: 16px 0;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
-    position: relative;
-    /* border-bottom: none; ← 필요하면 유지 */
-    padding: 16px 0;   /* 위아래로 여유 추가 */
     }
 
+    /* 뒤로가기 버튼 위치 조정 */
     .back-button {
     position: absolute;
-    top: 55%;
-    left: 18px;                     /* 왼쪽에 붙이기 */
-    transform: translateY(-50%); /* header 높이의 세로 중앙 */
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
     width: 48px;
     height: 48px;
     display: flex;
@@ -49,7 +57,7 @@
     align-items: center;
     cursor: pointer;
     }
-    /* 회색 원을 따로 div로 */
+
     .back-circle {
     width: 40px;
     height: 40px;
@@ -58,13 +66,11 @@
     position: absolute;
     }
 
-    /* 화살표는 독립적으로 크기 조절 */
     .back-arrow-img {
-    width: 18px;  /* 화살표 크기만 줄이기 가능 */
+    width: 18px;
     height: 18px;
     position: absolute;
     }
-
 
     .header-title {
     font-size: 16px;
@@ -163,14 +169,15 @@
     z-index: 999;
     }
     .modal-sheet {
-    width: 375px;
+    width: 100%;
+    max-width: 375px;
     height: 420px;
     background: var(--Neutral-100, #F9F9F9);
     border-radius: 16px 16px 0 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 24px;     /* 모달 전체 좌우 24px 여백 유지 */
+    padding: 24px;
     gap: 16px;
     overflow-y: auto;
     margin-bottom: 60px;
@@ -265,4 +272,34 @@
     margin: 4px 0;
     text-align: center;
     }
-
+    @media (min-width: 768px) {
+    html, body, .profile-body {
+        padding: 40px 0;
+    }
+    .profile-container {
+        max-width: 480px;
+        min-height: 700px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    }
+    .modal-sheet {
+        max-width: 480px;
+        height: 480px;
+        border-radius: 20px 20px 0 0;
+    }
+    .header-title {
+        font-size: 20px;
+    }
+    .back-button {
+        width: 56px;
+        height: 56px;
+    }
+    .back-circle {
+        width: 48px;
+        height: 48px;
+    }
+    .back-arrow-img {
+        width: 22px;
+        height: 22px;
+    }
+    }
