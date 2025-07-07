@@ -38,19 +38,18 @@ function checkPasswords() {
         alert("비밀번호가 일치하지 않거나 비밀번호를 입력하지 않았습니다.");
         return false;
     }
-
+    
     return true;
 }
 
 // 회원가입 요청 보내는 함수 (fetch API 사용)
-async function signup() {
+    async function signup() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const nickname = document.getElementById("nickname").value.trim();
-    const department = document.getElementById("department").value;
-    const role = "USER";  // 고정
+    const department = document.getElementById("major").value; // ✅ HTML과 일치
+    const role = "USER";
 
-    // 이메일 및 비밀번호 유효성 체크
     if (!checkEmail()) {
         alert("유효한 이메일을 입력하고 중복확인을 해주세요.");
         return;
@@ -68,28 +67,27 @@ async function signup() {
     }
 
     try {
-        const response = await fetch("https://example.com/eushop/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email,
-                password,
-                nickname,
-                department,
-                role
-            }),
+        const response = await fetch("https://likelion.lefteushop.work/eushop/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email,
+            password,
+            nickname,
+            department,
+            role
+        }),
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            alert(`회원가입 실패: ${errorData.message || response.statusText}`);
-            return;
+        const errorData = await response.json();
+        alert(`회원가입 실패: ${errorData.message || response.statusText}`);
+        return;
         }
 
         const data = await response.json();
-
         alert(data.message || "회원가입 성공!");
         window.location.href = "../login/login.html";
 
@@ -97,4 +95,5 @@ async function signup() {
         alert("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
         console.error(error);
     }
-}
+    }
+
