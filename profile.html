@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>프로필</title>
+    <link rel="stylesheet" href="profile.css" />
+    <script src="profile.js" defer></script>
+  </head>
+  <body class="profile-body">
+    <div class="profile-container">
+      <header class="profile-header">
+        <div class="back-button" onclick="history.back()">
+          <div class="back-circle"></div>
+          <img
+            src="../svg_file/프로필동그라미.svg"
+            alt="뒤로가기 배경 원"
+            class="back-circle-img"
+          />
+          <img
+            src="../svg_file/프로필 왼쪽 화살표.svg"
+            alt="뒤로가기 화살표"
+            class="back-arrow-img"
+          />
+        </div>
+        <h1 class="header-title">프로필</h1>
+      </header>
+
+      <section class="user-info">
+        <div class="user-details">
+          <p class="username">홍길동</p>
+          <p class="department">간호학과</p>
+          <p class="email">abcd1234@g.eulji.ac.kr</p>
+        </div>
+        <button class="edit-button" onclick="openModal()">정보 수정</button>
+      </section>
+
+      <nav class="menu-list">
+        <a href="cart.html" class="menu-item">
+          <div class="menu-left">
+            <img
+              src="../svg_file/cart.svg"
+              alt="등록한 상품"
+              class="menu-icon"
+            />
+            <span class="menu-text">등록한 상품</span>
+          </div>
+          <img
+            src="../svg_file/프로필화살표.svg"
+            alt="화살표"
+            class="arrow-icon"
+          />
+        </a>
+        <a href="#" class="menu-item" onclick="location.href='favorite.html'">
+          <div class="menu-left">
+            <img src="../svg_file/heart.svg" alt="찜" class="menu-icon" />
+            <span class="menu-text">찜</span>
+          </div>
+          <img
+            src="../svg_file/프로필화살표.svg"
+            alt="화살표"
+            class="arrow-icon"
+          />
+        </a>
+        <a href="login.html" class="menu-item">
+          <div class="menu-left">
+            <img
+              src="../svg_file/logout.svg"
+              alt="로그아웃"
+              class="menu-icon"
+            />
+            <span class="menu-text">로그아웃</span>
+          </div>
+          <img
+            src="../svg_file/프로필화살표.svg"
+            alt="화살표"
+            class="arrow-icon"
+          />
+        </a>
+      </nav>
+    </div>
+
+    <div class="modal-overlay" id="editModal">
+      <div class="modal-sheet">
+        <div class="modal-header">
+          <span class="modal-title">정보수정</span>
+          <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+          <label for="nickname">닉네임</label>
+          <input
+            type="text"
+            id="nickname"
+            placeholder="변경할 닉네임을 입력하세요."
+          />
+
+          <label for="department">학과 선택</label>
+          <select id="department">
+            <option value="" disabled selected hidden>
+              학과를 선택하세요.
+            </option>
+            <option>첨단학부</option>
+            <option>자연계열학부</option>
+            <option>인문사회계열학부</option>
+            <option>자유전공학부</option>
+            <option>바이오공학부</option>
+            <option>스마트의료정보학부</option>
+            <option>휴먼서비스학부</option>
+            <option>임상병리학과</option>
+            <option>방사선학과</option>
+            <option>물리치료학과</option>
+            <option>응급구조학과</option>
+            <option>안경광학과</option>
+            <option>치위생학과</option>
+            <option>의료경영학과</option>
+            <option>식품영양학과</option>
+            <option>식품산업외식학과</option>
+            <option>보건환경안전학과</option>
+            <option>의료IT학과</option>
+            <option>미용화장품과학과</option>
+            <option>의료홍보디자인학과</option>
+            <option>스포츠아웃도어학과</option>
+            <option>장례지도학과</option>
+            <option>중독재활복지학과</option>
+            <option>유아교육학과</option>
+            <option>아동학과</option>
+            <option>빅데이터의료융합학과</option>
+          </select>
+
+          <p class="modal-error" id="editError" style="display: none">
+            수정된 사항이 없습니다.
+          </p>
+        </div>
+        <button class="modal-submit" onclick="submitEdit()">수정하기</button>
+      </div>
+    </div>
+  </body>
+</html>

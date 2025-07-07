@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>등록한 상품</title>
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body class="registered-body">
+    <div class="registered-container">
+      <header class="registered-header">
+        <button class="back-button" onclick="history.back()">
+          <img
+            src="../svg_file/프로필동그라미.svg"
+            alt="뒤로가기 배경 원"
+            class="back-circle-img"
+          />
+          <img
+            src="../svg_file/arrow-angle-left.svg"
+            alt="뒤로가기"
+            class="back-icon"
+          />
+        </button>
+        <h1 class="header-title">등록한 상품</h1>
+      </header>
+
+      <section class="toggle-section">
+        <button class="toggle-button active">팝니다</button>
+        <button class="toggle-button" onclick="location.href='cart2.html'">
+          삽니다
+        </button>
+      </section>
+
+      <section class="item-list">
+        <!-- 첫 번째 카드 -->
+        <div class="item-card">
+          <div class="item-info">
+            <div class="item-image"></div>
+            <div class="item-description">
+              <p class="item-category">잡화</p>
+              <p class="item-title">베이프 남성 티셔츠 판매합니다.</p>
+              <p class="item-price">200,000원</p>
+            </div>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="item-button active" onclick="markAsSold(this)">
+            판매중
+          </button>
+          <button
+            class="item-button"
+            onclick="location.href='prod_modify.html'"
+          >
+            게시글 수정
+          </button>
+          <button class="item-button">삭제하기</button>
+        </div>
+
+        <!-- 두 번째 카드 -->
+        <div class="item-card">
+          <div class="item-info">
+            <div class="item-image"></div>
+            <div class="item-description">
+              <p class="item-category">잡화</p>
+              <p class="item-title">베이프 남성 티셔츠 판매합니다.</p>
+              <p class="item-price">200,000원</p>
+            </div>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="item-button active" onclick="markAsSold(this)">
+            판매중
+          </button>
+          <button
+            class="item-button"
+            onclick="location.href='prod_modify.html'"
+          >
+            게시글 수정
+          </button>
+          <button class="item-button">삭제하기</button>
+        </div>
+      </section>
+    </div>
+    <!-- 커스텀 confirm 모달 -->
+    <!-- 판매완료 확인 모달 -->
+    <div
+      id="confirmModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          text-align: center;
+          width: 300px;
+        "
+      >
+        <p id="confirmText">정말 판매완료로 변경하시겠습니까?</p>
+        <button onclick="confirmOk()">확인</button>
+        <button onclick="confirmCancel()">취소</button>
+      </div>
+    </div>
+
+    <script src="cart.js"></script>
+  </body>
+</html>
