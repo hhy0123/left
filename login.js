@@ -18,7 +18,7 @@ async function login() {
     });
 
     // 1. accessToken을 응답 헤더에서 꺼내기
-    const accessToken = response.headers.get("access-token"); // 헤더 이름은 정확히 확인!
+    const accessToken = response.headers.get("Authorization"); // 헤더 이름은 정확히 확인!
 
     if (!response.ok) {
       // 실패 응답 처리
