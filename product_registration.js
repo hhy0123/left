@@ -198,11 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactLink = document.querySelector("#link").value;
     const selectedCategory =
       document.querySelector(".category.selected")?.value || null;
-    const returnable =
+    const isReturnable =
       document.querySelector(".return.selected")?.value === "true";
-    const delivery =
+    const isDelivery =
       document.querySelector(".delivery.selected")?.value === "true";
-    const directTrade =
+    const isDirectTrade =
       document.querySelector(".direct.selected")?.value === "true";
 
     const postData = {
@@ -211,9 +211,9 @@ document.addEventListener("DOMContentLoaded", () => {
       price: price,
       category: selectedCategory,
       postType: postType,
-      returnable: returnable,
-      delivery: delivery,
-      directTrade: directTrade,
+      returnable: isReturnable,
+      delivery: isDelivery,
+      directTrade: isDirectTrade,
       contactLink: contactLink,
       introImgUrl: imageURLs[0] || null,
       imgUrls: imageURLs,
