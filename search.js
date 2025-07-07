@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ✅ 검색 요청 함수
+  // 검색 요청 함수
   async function request() {
     const keyword = searchInput.value.trim();
 
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(`searched${index}`, keyword);
   }
 
-  // ✅ 검색 기록 렌더링
+  // 검색 기록 렌더링
   function renderSearchHistory() {
     const historyContainer = document.querySelector(".search-log-div");
     historyContainer.innerHTML = "";
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ✅ 검색어 삭제 및 재정렬
+  // 검색어 삭제 및 재정렬
   function deleteSearchKeyword(keyToDelete) {
     const temp = [];
 
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ✅ 페이지 로드시 검색 기록 표시
+  // 페이지 로드시 검색 기록 표시
   renderSearchHistory();
 });
 
