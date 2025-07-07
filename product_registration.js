@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const formData = new FormData();
-    selected.forEach((file) => formData.append("images", file));
+    selected.forEach((file) => formData.append("upload", file)); // ← 여기!
 
     try {
       const res = await fetch("/eushop/image/upload", {
@@ -53,8 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (!res.ok) {
-        const errorBody = await res.json();
-
+        let errorBody = {};
+        try {
+          errorBody = await res.json();
+        } catch {}
         if (res.status === 404 && errorBody.code === "User not found") {
           alert("유저를 찾을 수 없음");
         } else if (
@@ -69,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           alert("알 수 없는 오류가 발생했습니다.");
         }
-
         throw new Error(`HTTP ${res.status} - ${errorBody.code}`);
       }
 
