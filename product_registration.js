@@ -219,6 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
       imgUrls: imageURLs,
     };
 
+    console.log("게시글 데이터:", postData);
+
     // 게시글 등록 요청
     fetch("https://likelion.lefteushop.work/eushop/posts/create", {
       method: "POST",
