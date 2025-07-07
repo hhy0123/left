@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const formData = new FormData();
-    selected.forEach((file) => formData.append("upload", file)); // ← 여기!
+    selected.forEach((file) => formData.append("upload", file));
 
     try {
       const res = await fetch(
@@ -53,11 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            Authorization: access,
-            body: JSON.stringify(formData),
-            credentials: "include",
+            Authorization: accessToken, // accessToken을 사용!
           },
+          body: formData,
+          credentials: "include",
         }
       );
 
@@ -94,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("업로드 실패");
     }
   });
-
   // ✅ 이미지 삭제 함수 (서버로 DELETE 요청)
   async function deleteImageFromServer(url) {
     try {
