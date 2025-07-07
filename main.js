@@ -54,25 +54,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const activeBtn = document.querySelector(".buyORsell.active");
     const checkedRadio = document.querySelector(".category-radio:checked");
 
-    let endpoint = "/eushop/list"; // 기본 경로
+    let endpoint = "https://likelion.lefteushop.work/eushop/list"; // 기본 경로
 
     if (checkedRadio) {
       const value = checkedRadio.value;
       if (value === "jeongong") {
-        endpoint = "/eushop/list/category/MAJOR";
+        endpoint =
+          "https://likelion.lefteushop.work/eushop/list/category/MAJOR";
       } else if (value === "gyoyang") {
-        endpoint = "/eushop/list/category/GENERAL";
+        endpoint =
+          "https://likelion.lefteushop.work/eushop/list/category/GENERAL";
       } else if (value === "jabhwa") {
-        endpoint = "/eushop/list/category/MISC";
+        endpoint = "https://likelion.lefteushop.work/eushop/list/category/MISC";
       } else if (value === "none") {
-        endpoint = "/eushop/list";
+        endpoint = "https://likelion.lefteushop.work/eushop/list";
       }
     } else if (activeBtn) {
       const value = activeBtn.value;
       if (value === "sell") {
-        endpoint = "/eushop/list/type/SELL";
+        endpoint = "https://likelion.lefteushop.work/eushop/list/type/SELL";
       } else if (value === "buy") {
-        endpoint = "/eushop/list/type/BUY";
+        endpoint = "https://likelion.lefteushop.work/eushop/list/type/BUY";
       }
     }
 
