@@ -17,30 +17,35 @@ async function login() {
       body: JSON.stringify({ email, password }),
     });
 
-    const rawText = await response.text();
+  const rawText = await response.text();
 
-    if (!response.ok) {
-      console.error("로그인 실패", rawText);
-      throw new Error("응답 실패: " + response.status);
-    }
+  if (!response.ok) {
+    console.error("로그인 실패", rawText);
+    throw new Error("응답 실패: " + response.status);
+  }
 
-    let data;
+  let data = {};
+  if (rawText.trim()) {
     try {
       data = JSON.parse(rawText);
     } catch (e) {
       console.error("JSON 파싱 실패: ", rawText);
-      throw new Error("서버 응답이 올바른 JSON이 아닙니다.");
+      throw new Error("서버 응답이 JSON이 아닙니다.");
     }
+  } else {
+    console.warn("서버 응답 바디가 비어 있음");
+  }
 
-    const accessToken = data.accessToken || data.token;
-    if (!accessToken) {
-      throw new Error("accessToken이 응답에 없습니다.");
-    }
+  const accessToken = data.accessToken || data.token;
+  if (!accessToken) {
+    throw new Error("accessToken이 응답에 없습니다.");
+  }
 
-    localStorage.setItem("accessToken", accessToken);
+  localStorage.setItem("accessToken", accessToken);
 
-    alert("로그인 성공!");
-    window.location.href = "main.html";
+  alert("로그인 성공!");
+  window.location.href = "main.html";
+
   } catch (error) {
     alert("로그인 실패: " + error.message);
     console.error("로그인 에러:", error);
