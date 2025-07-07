@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("게시글 데이터:", postData);
 
     // 게시글 등록 요청
-    fetch("https://leftlion.netlify.app//eushop/posts/create", {
+    fetch("https://likelion.lefteushop.work/eushop/posts/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
