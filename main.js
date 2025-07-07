@@ -43,80 +43,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ✅ 초기 로딩 시 SELL 기준 렌더링
-  // document.querySelector('.buyORsell[value="sell"]')?.classList.add("active");
+  document.querySelector('.buyORsell[value="sell"]')?.classList.add("active");
   fetchEushopList();
 
-  // ✅ 서버에서 상품 불러와서 렌더링
-  async function fetchEushopList() {
-    buyContainer.innerHTML = "";
-    sellContainer.innerHTML = "";
+  function sellClick() {}
 
-    const activeBtn = document.querySelector(".buyORsell.active");
-    const checkedRadio = document.querySelector(".category-radio:checked");
+  async function loadProducts(type) {
+    const url = `https://likelion.lefteushop.work/eushop/list/type/${type.toUpperCase()}`;
 
-    let endpoint = "https://likelion.lefteushop.work/eushop/list"; // 기본 경로
+    // 컨테이너 가져오기
+    const sellContainer = document.querySelector(".sell-container");
+    const buyContainer = document.querySelector(".buy-container");
 
-    if (checkedRadio) {
-      const value = checkedRadio.value;
-      if (value === "MAJOR") {
-        endpoint = `https://likelion.lefteushop.work/category/MAJOR`;
-      } else if (value === "GENERAL") {
-        endpoint = `https://likelion.lefteushop.work/category/GENERAL`;
-      } else if (value === "MISC") {
-        endpoint = `https://likelion.lefteushop.work/category/MISC`;
-      } else if (value === "none") {
-        endpoint = endpoint;
-      }
-    } else if (activeBtn) {
-      const value = activeBtn.value;
-      if (value === "sell") {
-        endpoint = "https://likelion.lefteushop.work/eushop/list/type/SELL";
-      } else if (value === "buy") {
-        endpoint = "https://likelion.lefteushop.work/eushop/list/type/BUY";
-      }
+    // 컨테이너 표시/숨김 처리
+    if (type === "sell") {
+      sellContainer.style.display = "block";
+      buyContainer.style.display = "none";
+    } else if (type === "buy") {
+      sellContainer.style.display = "none";
+      buyContainer.style.display = "block";
     }
 
     try {
-      const res = await fetch(endpoint);
-      if (!res.ok) {
-        switch (res.status) {
-          case 404: {
-            const errData = await res.json();
-            if (errData.code === "User not found") {
-              alert("❌ 유저를 찾을 수 없습니다.");
-            } else if (errData.code === "review not found") {
-              alert("❌ 리뷰를 찾을 수 없습니다.");
-            } else {
-              alert("❌ 리소스를 찾을 수 없습니다.");
-            }
-            throw new Error("404 Not Found");
-          }
-          case 401:
-            alert("🔒 리소스에 대한 액세스 권한이 없습니다.");
-            throw new Error("401 Unauthorized");
-          case 500:
-            alert("💥 DB 수정 실패");
-            throw new Error("500 DB Error");
-          default:
-            alert(`❗ 알 수 없는 오류 (${res.status})`);
-            throw new Error(`Unknown error: ${res.status}`);
-        }
-      }
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
+      const productList = await res.json();
 
-      const responseData = await res.json();
+      // 출력할 대상 컨테이너 선택
+      const container = type === "sell" ? sellContainer : buyContainer;
+      container.innerHTML = ""; // 기존 내용 제거
 
-      if (!Array.isArray(responseData)) {
-        console.warn("데이터 형식 오류: 배열이 아님", responseData);
-        return;
-      }
-
-      responseData.forEach((data) => {
-        const card = document.createElement("div");
-        card.classList.add("product-card");
-        card.innerHTML = `
+      // 상품 카드 렌더링
+      productList.forEach((data) => {
+        const productHTML = `
           <div class="product-container">
             <div class="product-image">
-              <img id='introImagId' src="${data.introImgUrl}" alt="상품 이미지" />
+              <img id="introImagId" src="${data.intro_img_url}" alt="상품 이미지" />
             </div>
             <div class="haggwa-div">
               <p class="haggwa">${data.category}</p>
@@ -128,22 +90,18 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `;
-
-        if (activeBtn && activeBtn.value === "buy") {
-          buyContainer.appendChild(card);
-        } else {
-          sellContainer.appendChild(card);
-        }
+        container.insertAdjacentHTML("beforeend", productHTML);
       });
-
-      buyContainer.style.display =
-        activeBtn && activeBtn.value === "buy" ? "flex" : "none";
-      sellContainer.style.display =
-        activeBtn && activeBtn.value === "sell" ? "flex" : "none";
     } catch (err) {
-      console.error("에러 발생:", err);
+      console.error("불러오기 실패:", err.message);
     }
   }
+
+  // 초기엔 둘 다 안 보이게 하고 싶다면 아래 추가
+  window.addEventListener("DOMContentLoaded", () => {
+    // document.querySelector(".sell-container").style.display = "none";
+    document.querySelector(".buy-container").style.display = "none";
+  });
 
   // ✅ 카테고리 클릭 시 버튼 active 해제
   window.categoryClick = function () {
