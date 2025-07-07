@@ -151,8 +151,6 @@
 }
 
 .product-image {
-  width: 10.375rem;
-  height: 11.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
