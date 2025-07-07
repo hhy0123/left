@@ -153,7 +153,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5; /* 이미지 로딩 전 배경색 */
   overflow: hidden;
 }
 
