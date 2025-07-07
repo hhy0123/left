@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("postData(JSON):\n", JSON.stringify(postData, null, 2));
 
     // 게시글 등록 요청
-    fetch("https://likelion.lefteushop.work/eushop/posts/create", {
+    fetch("https://likelion.lefteushop.work/eushop/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
