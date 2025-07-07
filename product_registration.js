@@ -197,11 +197,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const postStatus = "판매중";
     const selectedCategory =
       document.querySelector(".category.selected")?.value || null;
-    const isReturnable =
+    const returnable =
       document.querySelector(".return.selected")?.value === "true";
-    const isDelivery =
+    const delivery =
       document.querySelector(".delivery.selected")?.value === "true";
-    const isDirectTrade =
+    const directTrade =
       document.querySelector(".direct.selected")?.value === "true";
 
     const postData = {
@@ -210,9 +210,9 @@ document.addEventListener("DOMContentLoaded", () => {
       price: price,
       category: selectedCategory,
       postType: postType,
-      isReturnable: isReturnable,
-      isDelivery: isDelivery,
-      isDirectTrade: isDirectTrade,
+      returnable: returnable,
+      delivery: delivery,
+      directTrade: directTrade,
       ContactLink: contactLink,
       introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
