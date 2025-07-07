@@ -71,16 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const result = await res.json();
-      // 서버 응답 파싱
       imageURLs = result.imgUrls || [];
       window.introImgUrl = result.introImgUrl || null;
 
-      // 미리보기 등 활용 예시
-      if (introImgUrl) {
-        document.getElementById("mainImage").src = introImgUrl;
+      if (window.introImgUrl) {
+        document.getElementById("mainImage").src = window.introImgUrl;
       }
-      // imgUrls 배열을 썸네일 등으로 활용
-      updatePreview(imgUrls);
+
+      updatePreview(); // imageURLs를 내부에서 사용
 
       alert("✅ 이미지 업로드 성공");
     } catch (err) {
