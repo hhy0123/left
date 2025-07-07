@@ -71,9 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // 서버 응답 파싱
-      const result = await res.json();
-      const introImgUrl = result.introImgUrl;
-      const imgUrls = result.imgUrls;
+      imageURLs = result.imgUrls || [];
+      window.introImgUrl = result.introImgUrl || null;
 
       // 미리보기 등 활용 예시
       if (introImgUrl) {
@@ -211,11 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
       price: price,
       category: selectedCategory,
       postType: postType,
-      returnable: isReturnable,
-      delivery: isDelivery,
-      directTrade: isDirectTrade,
+      isReturnable: isReturnable,
+      isDelivery: isDelivery,
+      isDirectTrade: isDirectTrade,
       contactLink: contactLink,
-      introImgUrl: imageURLs[0] || null,
+      introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
     };
 
