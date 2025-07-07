@@ -16,18 +16,22 @@ async function login() {
       credentials: "include",
       body: JSON.stringify({ email, password }),
     });
-    if (response.ok) {
-      // 헤더에서 access token 꺼내거나, 쿠키 저장됐는지 확인
-      console.log("로그인 성공");
-    } else {
-      const errorText = await response.text();
-      console.error("로그인 실패", errorText);
-    }
+
+    const rawText = await response.text();
+
     if (!response.ok) {
+      console.error("로그인 실패", rawText);
       throw new Error("응답 실패: " + response.status);
     }
 
-    // 🔍 서버 응답을 text로 먼저 읽고 JSON 파싱 시도
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (e) {
+      console.error("JSON 파싱 실패: ", rawText);
+      throw new Error("서버 응답이 올바른 JSON이 아닙니다.");
+    }
+
     const accessToken = data.accessToken || data.token;
     if (!accessToken) {
       throw new Error("accessToken이 응답에 없습니다.");
