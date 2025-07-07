@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="detail.css" />
+    <title>상품 상세</title>
+  </head>
+  <body>
+    <div class="top-div">
+      <div class="back-btn-div">
+        <img
+          class="back-btn-svg"
+          src="svg_file/arrow-angle-left.svg"
+          alt="돌아가기 버튼"
+          onclick="backto()"
+        />
+      </div>
+      <h2>상품 상세</h2>
+    </div>
+    <div class="detail-div">
+      <div class="image-div">
+        <label class="image-upload-box" for="image-input">
+          <img
+            src="svg_file/Placeholder.svg"
+            alt="기본 아이콘"
+            id="default1-icon"
+            class="default-icon"
+          />
+        </label>
+      </div>
+    </div>
+    <div class="main-div">
+      <div class="name-favoirte-div">
+        <p id="name-p"></p>
+        <img src="svg_file/favorite_border.svg" alt="찜 아이콘" />
+      </div>
+      <p id="title-p"></p>
+      <p id="price-p"></p>
+    </div>
+    <div class="condition-div">
+      <div class="return-c-div">
+        <img
+          class="condition-icons"
+          src="svg_file/hugeicons_delivery-return-01.svg"
+          alt="반품 아이콘"
+        />
+        <p class="condition-p">반품</p>
+        <p class="attribute-p" id="return-c-p"></p>
+      </div>
+      <div class="delivery-c-div">
+        <img
+          class="condition-icons"
+          src="svg_file/Group.svg"
+          alt="택배 아이콘"
+        />
+        <p class="condition-p">택배 거래</p>
+        <p class="attribute-p" id="delivery-c-p"></p>
+      </div>
+      <div class="direct-c-div">
+        <img
+          class="condition-icons"
+          src="svg_file/cash-on-delivery-icon 2.svg"
+          alt="직거래 아이콘"
+        />
+        <p class="condition-p">직거래</p>
+        <p class="attribute-p" id="direct-c-p"></p>
+      </div>
+    </div>
+    <div class="detail-content-div">
+      <p class="detail-content-p"></p>
+    </div>
+    <div class="contact-window-div">
+      <div class="window-p-div">
+        <div class="window-header-div">
+          <p class="window-p1">원하는 상품인가요?</p>
+          <span class="window-close-span">×</span>
+        </div>
+        <p class="window-p2">판매자에게 오픈채팅으로 바로 문의 해보세요!</p>
+        <div class="real-contact-btn-div">
+          <button class="real-contact-btn">지금 판매자와 대화 시작하기</button>
+          <p class="kakao-text-p">&#40;카카오 오픈채팅으로 연결됩니다&#41;</p>
+        </div>
+      </div>
+    </div>
+    <nav class="contact-btn-nav">
+      <div class="contact-button-div">
+        <button id="contact-btn">연락하기</button>
+      </div>
+    </nav>
+    <script src="detail.js"></script>
+  </body>
+</html>

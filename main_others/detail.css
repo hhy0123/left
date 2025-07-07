@@ -1,0 +1,348 @@
+@font-face {
+  font-family: "ONE-Mobile-Title";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+}
+
+.top-div {
+  position: relative; /* (1) 내부 버튼 absolute 위해 추가 */
+  display: flex;
+  width: 23.4375rem;
+  height: 3.5rem; /* 높이 지정 */
+  justify-content: center; /* (2) 텍스트 가운데 정렬 */
+  align-items: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 0.8rem;
+}
+
+/* 텍스트 스타일 그대로 유지 */
+.top-div h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "ONE-Mobile-Title";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem; /* 200% */
+}
+
+/* (3) 버튼을 절대 위치로 왼쪽 고정 */
+.back-btn-div {
+  position: absolute; /* ← 여기 추가 */
+  left: 0.5rem; /* ← 왼쪽 위치 */
+  display: inline-flex;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 3.125rem;
+  border: 1px solid #d5d6d7;
+}
+
+.back-btn-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.image-div {
+  margin: 0 auto;
+  display: flex;
+  width: 21.4375rem;
+  height: auto;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+
+.image-upload-box {
+  width: 21.4375rem;
+  height: 22.1875rem;
+  border: 1px solid #747474;
+  margin-bottom: 0.625rem;
+  display: flex;
+  background-color: #f9f9f9;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0.77rem;
+  position: relative; /* 추가 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 기본 플러스 아이콘은 작은 크기 유지 */
+.image-upload-box .default-icon {
+  width: 9.30925rem;
+  height: 9.30925rem;
+  object-fit: none;
+}
+
+.image-upload-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.81rem;
+  margin-left: 1.05rem;
+  margin-right: 1.05rem;
+}
+
+.name-favoirte-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#name-p {
+  color: #747474;
+  font-family: "Pretendard-Regular";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+}
+
+#title-p {
+  margin-bottom: 0.45rem;
+}
+
+.condition-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.62rem 1rem 2.62rem;
+}
+
+.condition-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.condition-p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #303030;
+  text-align: center;
+  font-family: "Pretendard-Regular";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.attribute-p {
+  margin: 0;
+  color: #303030;
+  font-family: "Pretendard-Regular";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+p {
+  margin: 0;
+}
+
+.return-c-div {
+  display: flex;
+  width: 7.0595rem;
+  height: 4.25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  gap: 0;
+}
+
+.delivery-c-div {
+  display: flex;
+  width: 7.0595rem;
+  height: 4.25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  gap: 0;
+}
+
+.direct-c-div {
+  display: flex;
+  width: 7.0595rem;
+  height: 4.25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  gap: 0;
+}
+
+.detail-content-p {
+  color: #747474;
+  font-family: "Pretendard-Regular";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 1.05rem;
+  margin-right: 1rem;
+}
+
+.contact-btn-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  padding-bottom: 2.25rem;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  z-index: 1000;
+}
+
+.contact-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffff;
+}
+
+#contact-btn {
+  display: flex;
+  width: 21.5625rem;
+  height: 2.75rem;
+  padding: 0.5rem 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  background: #0092ff;
+  border: none;
+  color: #f9f9f9;
+  text-align: center;
+  font-family: "ONE-Mobile-Title";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 0.74rem;
+}
+
+.contact-window-div {
+  display: none; /* 처음엔 안 보이게 */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  width: 19.8125rem;
+  height: 12.375rem;
+  flex-shrink: 0;
+  border-radius: 0.875rem;
+  background: #0092ff;
+  display: flex;
+  flex-direction: column;
+
+  color: #ffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  gap: 0;
+}
+
+.window-p1,
+.window-p2 {
+  color: #fff;
+  font-family: "Pretendard-Regular";
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 194%; /* 1.57625rem */
+}
+
+.kakao-text-p {
+  color: #fff;
+  font-family: "Pretendard-Regular";
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 194%; /* 1.2125rem */
+}
+
+.window-header-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.44rem;
+  margin-left: 1.31rem;
+}
+
+.window-p2 {
+  margin-left: 1.31rem;
+  margin-bottom: 3.5rem;
+}
+
+.real-contact-btn-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.real-contact-btn {
+  width: 17.1875rem;
+  height: 2.125rem;
+  flex-shrink: 0;
+  border-radius: 0.875rem;
+  background: #fff;
+  border: none;
+  margin-bottom: 0.31rem;
+  color: #0092ff;
+  font-family: "Pretendard";
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 194%; /* 1.33375rem */
+}
+
+.window-close-span {
+  margin-right: 0.94rem;
+  margin-top: -0.88rem;
+  font-size: 2rem;
+}

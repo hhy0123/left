@@ -18,8 +18,19 @@
       </div>
       <h2><span style="color: #0092ff">게시글</span>등록</h2>
     </div>
+    <form id="imageForm" enctype="multipart/form-data">
+      <input type="file" id="imageInput" multiple accept="image/*" hidden />
+      <div id="mainImage" class="image-box">
+        <img
+          src="svg_file/plus.svg"
+          alt="사진 첨부 아이콘"
+          id="mainImage-icon"
+        />
+      </div>
+      <div id="subImages" class="sub-image-container"></div>
+    </form>
     <form action="#">
-      <div class="image-div">
+      <!-- <div class="image-div">
         <label class="image-upload-box" for="image-input">
           <img
             src="svg_file/plus.svg"
@@ -27,76 +38,9 @@
             id="default1-icon"
             class="default-icon"
           />
-          <input type="file" id="image-input" accept="image/*" /><br />
+          <input type="file" id="image-input" accept="image/*" multiple /><br />
         </label>
-        <div class="sub-image-upload-list">
-          <label class="sub-upload-box">
-            <img
-              src="svg_file/plus.svg"
-              class="sub-preview default-sub-icon"
-              alt="추가 이미지 1"
-            />
-            <input
-              type="file"
-              class="sub-image-input"
-              accept="image/*"
-              style="display: none"
-            />
-          </label>
-          <label class="sub-upload-box">
-            <img
-              src="svg_file/plus.svg"
-              class="sub-preview default-sub-icon"
-              alt="추가 이미지 2"
-            />
-            <input
-              type="file"
-              class="sub-image-input"
-              accept="image/*"
-              style="display: none"
-            />
-          </label>
-          <label class="sub-upload-box">
-            <img
-              src="svg_file/plus.svg"
-              class="sub-preview default-sub-icon"
-              alt="추가 이미지 3"
-            />
-            <input
-              type="file"
-              class="sub-image-input"
-              accept="image/*"
-              style="display: none"
-            />
-          </label>
-          <label class="sub-upload-box">
-            <img
-              src="svg_file/plus.svg"
-              class="sub-preview default-sub-icon"
-              alt="추가 이미지 4"
-            />
-            <input
-              type="file"
-              class="sub-image-input"
-              accept="image/*"
-              style="display: none"
-            />
-          </label>
-          <label class="sub-upload-box">
-            <img
-              src="svg_file/plus.svg"
-              class="sub-preview default-sub-icon"
-              alt="추가 이미지 5"
-            />
-            <input
-              type="file"
-              class="sub-image-input"
-              accept="image/*"
-              style="display: none"
-            />
-          </label>
-        </div>
-      </div>
+      </div> -->
       <fieldset>
         <div class="buy-sell-select-div">
           <label for="buy-sell-select">게시글 유형</label><br />
@@ -114,11 +58,6 @@
             <label for="price">가격 입력</label><br />
             <input id="price" type="number" placeholder="판매가격 입력" /><br />
           </div>
-          <div class="checkbox-div">
-            <input id="check-box" type="checkbox" />
-            <p class="price-p">가격 제안 받기</p>
-            <br />
-          </div>
           <div class="info-div">
             <label class="info-label" for="info">상품 설명</label><br />
             <textarea
@@ -133,9 +72,9 @@
           <p>상품 카테고리 선택</p>
           <br />
           <div class="category-btn">
-            <button type="button" class="category">전공</button>
-            <button type="button" class="category">교양</button>
-            <button type="button" class="category">잡화</button>
+            <button type="button" class="category" value="MAJOR">전공</button>
+            <button type="button" class="category" value="GENERAL">교양</button>
+            <button type="button" class="category" value="MISC">잡화</button>
           </div>
         </div>
         <div class="method-div">
@@ -149,8 +88,8 @@
               <p class="return-p">반품</p>
             </div>
             <div class="return-btn">
-              <button type="button" class="return">가능</button>
-              <button type="button" class="return">불가능</button>
+              <button type="button" class="return" value="true">가능</button>
+              <button type="button" class="return" value="false">불가능</button>
             </div>
           </div>
           <div class="delivery-div">
@@ -162,8 +101,10 @@
               <p class="delivery-p">택배 거래</p>
             </div>
             <div class="delivery-btn">
-              <button type="button" class="delivery">가능</button>
-              <button type="button" class="delivery">불가능</button>
+              <button type="button" class="delivery" value="true">가능</button>
+              <button type="button" class="delivery" value="false">
+                불가능
+              </button>
             </div>
           </div>
           <div class="direct-div">
@@ -175,8 +116,8 @@
               <p class="direct-p">직거래</p>
             </div>
             <div class="direct-btn">
-              <button type="button" class="direct">가능</button>
-              <button type="button" class="direct">불가능</button>
+              <button type="button" class="direct" value="true">가능</button>
+              <button type="button" class="direct" value="false">불가능</button>
             </div>
           </div>
         </div>
