@@ -218,6 +218,10 @@ document.addEventListener("DOMContentLoaded", () => {
       imgUrls: imageURLs,
     };
 
+    console.log("postData:", postData);
+    // 또는 보기 좋게
+    console.log("postData(JSON):\n", JSON.stringify(postData, null, 2));
+
     // 게시글 등록 요청
     fetch("https://likelion.lefteushop.work/eushop/posts/create", {
       method: "POST",
