@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const response = await fetch("https://likelion.lefteushop.work/eushop/profile", {
       method: "GET",
       headers: {
-        Authorization: accessToken,
+        access: accessToken,
       },
       credentials: "include", // refresh token 쿠키 자동 포함
     });
@@ -76,7 +76,7 @@ async function submitEdit() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: accessToken,
+        access: accessToken,
       },
       body: JSON.stringify({ nickname, department }),
       credentials: "include",
@@ -111,8 +111,8 @@ async function submitEdit() {
 function logout() {
   localStorage.removeItem("accessToken");
 
-  fetch("https://likelion.lefteushop.work//eushop/profile", {
-    method: "GET",
+  fetch("https://likelion.lefteushop.work/eushop/logout", {
+    method: "POST",
     credentials: "include",
   })
     .then((res) => {
