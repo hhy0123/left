@@ -57,13 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let endpoint = "https://likelion.lefteushop.work/eushop/list"; // 기본 경로
 
     if (checkedRadio) {
-      const value = checkedRadio.value;
-      if (value === "jeongong") {
-        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${MAJOR}`;
-      } else if (value === "gyoyang") {
-        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${GENERAL}`;
-      } else if (value === "jabhwa") {
-        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${MISC}`;
+      const category = checkedRadio.value;
+      if (value === "MAJOR") {
+        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${category}`;
+      } else if (value === "GENERAL") {
+        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${category}`;
+      } else if (value === "MISC") {
+        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${category}`;
       } else if (value === "none") {
         endpoint = "https://likelion.lefteushop.work/eushop/list";
       }
