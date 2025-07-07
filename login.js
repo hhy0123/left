@@ -13,38 +13,29 @@ async function login() {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
+      credentials: "include", // refreshToken 쿠키 저장용
       body: JSON.stringify({ email, password }),
     });
 
-  const rawText = await response.text();
+    // 1. accessToken을 응답 헤더에서 꺼내기
+    const accessToken = response.headers.get("access-token"); // 헤더 이름은 정확히 확인!
 
-  if (!response.ok) {
-    console.error("로그인 실패", rawText);
-    throw new Error("응답 실패: " + response.status);
-  }
-
-  let data = {};
-  if (rawText.trim()) {
-    try {
-      data = JSON.parse(rawText);
-    } catch (e) {
-      console.error("JSON 파싱 실패: ", rawText);
-      throw new Error("서버 응답이 JSON이 아닙니다.");
+    if (!response.ok) {
+      // 실패 응답 처리
+      const errorText = await response.text();
+      console.error("로그인 실패", errorText);
+      throw new Error("응답 실패: " + response.status);
     }
-  } else {
-    console.warn("서버 응답 바디가 비어 있음");
-  }
 
-  const accessToken = data.accessToken || data.token;
-  if (!accessToken) {
-    throw new Error("accessToken이 응답에 없습니다.");
-  }
+    if (!accessToken) {
+      throw new Error("accessToken이 응답 헤더에 없습니다.");
+    }
 
-  localStorage.setItem("accessToken", accessToken);
+    // 2. accessToken을 localStorage에 저장
+    localStorage.setItem("accessToken", accessToken);
 
-  alert("로그인 성공!");
-  window.location.href = "main.html";
+    alert("로그인 성공!");
+    window.location.href = "main.html";
 
   } catch (error) {
     alert("로그인 실패: " + error.message);
