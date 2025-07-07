@@ -209,11 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
       content: info,
       price: price,
       category: selectedCategory,
+      postType: postType,
       isReturnable: isReturnable,
       isDelivery: isDelivery,
       isDirectTrade: isDirectTrade,
       ContactLink: contactLink,
-      postType: postType,
       introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
     };
