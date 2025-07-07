@@ -59,13 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkedRadio) {
       const value = checkedRadio.value;
       if (value === "jeongong") {
-        endpoint =
-          "https://likelion.lefteushop.work/eushop/list/category/MAJOR";
+        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${MAJOR}`;
       } else if (value === "gyoyang") {
-        endpoint =
-          "https://likelion.lefteushop.work/eushop/list/category/GENERAL";
+        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${GENERAL}`;
       } else if (value === "jabhwa") {
-        endpoint = "https://likelion.lefteushop.work/eushop/list/category/MISC";
+        endpoint = `https://likelion.lefteushop.work/eushop/list/category/${MISC}`;
       } else if (value === "none") {
         endpoint = "https://likelion.lefteushop.work/eushop/list";
       }
