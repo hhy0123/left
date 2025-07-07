@@ -24,7 +24,7 @@
         height: 100vh;
         background-color: #0092FF !important;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
         padding: 0;
         overflow: hidden;
         box-sizing: border-box;
