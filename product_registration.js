@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const price = Number(document.querySelector("#price").value);
     const postType = document.querySelector("#buy-sell-select").value;
     const contactLink = document.querySelector("#link").value;
-    const postStatus = "판매중";
     const selectedCategory =
       document.querySelector(".category.selected")?.value || null;
     const returnable =
