@@ -47,10 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
     selected.forEach((file) => formData.append("upload", file)); // ← 여기!
 
     try {
-      const res = await fetch("/eushop/image/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://leftlion.netlify.app//eushop/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!res.ok) {
         let errorBody = {};
