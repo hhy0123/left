@@ -13,28 +13,27 @@ async function login() {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // refreshToken 쿠키 저장용
+      credentials: "include",
       body: JSON.stringify({ email, password }),
     });
 
-    // 헤더 이름이 'access'로 내려오는 경우
-    const accessToken = response.headers.get("access");
+    // 모든 응답 헤더 콘솔에 출력
+    for (let [key, value] of response.headers.entries()) {
+      console.log(key, value);
+    }
 
+    // 이후 토큰 처리 및 에러 처리 등 기존 로직
+    const accessToken = response.headers.get("access");
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error("응답 실패: " + response.status + "\n" + errorText);
     }
-
     if (!accessToken) {
       throw new Error("access 헤더에 accessToken이 없습니다.");
     }
-
-    // accessToken을 localStorage에 저장
     localStorage.setItem("accessToken", accessToken);
-
     alert("로그인 성공!");
     window.location.href = "main.html";
-
   } catch (error) {
     alert("로그인 실패: " + error.message);
     console.error("로그인 에러:", error);
