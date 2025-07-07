@@ -16,13 +16,18 @@ async function login() {
       credentials: "include",
       body: JSON.stringify({ email, password }),
     });
-
+    if (response.ok) {
+      // 헤더에서 access token 꺼내거나, 쿠키 저장됐는지 확인
+      console.log("로그인 성공");
+    } else {
+      const errorText = await response.text();
+      console.error("로그인 실패", errorText);
+    }
     if (!response.ok) {
       throw new Error("응답 실패: " + response.status);
     }
 
     // 🔍 서버 응답을 text로 먼저 읽고 JSON 파싱 시도
-    const rawText = await response.text();
 
     if (!rawText) {
       throw new Error("서버에서 응답이 비어 있습니다.");
