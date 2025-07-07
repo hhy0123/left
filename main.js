@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerHTML = `
           <div class="product-container">
             <div class="product-image">
-              <img src="${data.introImgUrl}" alt="상품 이미지" />
+              <img id='introImagId' src="${data.introImgUrl}" alt="상품 이미지" />
             </div>
             <div class="haggwa-div">
               <p class="haggwa">${data.category}</p>
