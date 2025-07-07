@@ -9,7 +9,7 @@ async function login() {
   }
 
   try {
-    const response = await fetch("https://example.com/eushop/login", {
+    const response = await fetch("https://likelion.lefteushop.work/eushop/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function logout() {
   localStorage.removeItem("accessToken");
 
   // refreshToken 쿠키 삭제 (httpOnly 쿠키라 JS로 직접 삭제 불가능하니, 로그아웃 API 호출)
-  fetch("https://example.com/eushop/logout", {
+  fetch("https://likelion.lefteushop.work/eushop/logout", {
     method: "POST",
     credentials: "include",
   }).finally(() => {
@@ -92,7 +92,7 @@ async function fetchWithAccessToken(url, options = {}) {
 // refreshToken으로 accessToken 재발급 함수 (4번)
 async function refreshAccessToken() {
   try {
-    const response = await fetch("https://example.com/eushop/token/refresh", {
+    const response = await fetch("https://likelion.lefteushop.work/eushop/token/refresh", {
       method: "POST",
       credentials: "include", // refreshToken 쿠키 포함해서 보내야 함
     });
