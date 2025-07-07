@@ -17,21 +17,21 @@ async function login() {
       body: JSON.stringify({ email, password }),
     });
 
-    // 1. accessToken을 응답 헤더에서 꺼내기
-    const accessToken = response.headers.get("Authorization"); // 헤더 이름은 정확히 확인!
+    // authorization 헤더에서 토큰 추출
+    let accessToken = response.headers.get("authorization");
+    if (accessToken && accessToken.startsWith("Bearer ")) {
+      accessToken = accessToken.slice(7); // "Bearer " 제거
+    }
 
     if (!response.ok) {
-      // 실패 응답 처리
       const errorText = await response.text();
-      console.error("로그인 실패", errorText);
-      throw new Error("응답 실패: " + response.status);
+      throw new Error("응답 실패: " + response.status + "\n" + errorText);
     }
 
     if (!accessToken) {
-      throw new Error("accessToken이 응답 헤더에 없습니다.");
+      throw new Error("authorization 헤더에 accessToken이 없습니다.");
     }
 
-    // 2. accessToken을 localStorage에 저장
     localStorage.setItem("accessToken", accessToken);
 
     alert("로그인 성공!");
