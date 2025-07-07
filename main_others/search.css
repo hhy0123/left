@@ -141,3 +141,28 @@
   filter: brightness(0) saturate(100%) invert(34%) sepia(94%) saturate(2457%)
     hue-rotate(185deg) brightness(102%) contrast(105%);
 }
+
+.search-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.19rem 1.25rem 1.19rem;
+  color: #747474;
+  font-family: "Pretendard-Regular", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #747474;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.search-log-div {
+  margin-bottom: 3.19rem;
+}

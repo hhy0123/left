@@ -132,11 +132,10 @@
 .sell-container,
 .buy-container {
   margin-bottom: 5rem;
-}
-
-.product-container {
-  margin-left: 0.75rem;
+  justify-content: space-between;
   margin-top: 1.19rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .haggwa-div {
@@ -198,6 +197,7 @@
   line-height: normal;
   margin: 0;
   margin-top: 0.38rem;
+  margin-bottom: 2rem;
 }
 
 .product-image img {
@@ -245,4 +245,18 @@
 .nav-item.active img {
   filter: brightness(0) saturate(100%) invert(34%) sepia(94%) saturate(2457%)
     hue-rotate(185deg) brightness(102%) contrast(105%);
+}
+
+@media screen and (max-width: 370px) and (max-height: 880px) {
+  .product-image {
+    width: 9.375rem;
+    height: 10.75rem;
+  }
+}
+
+@media screen and (width: 430px) and (height: 932px) {
+  .product-image {
+    width: 12rem;
+    height: 13.76rem;
+  }
 }

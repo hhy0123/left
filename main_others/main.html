@@ -14,12 +14,29 @@
     </div>
     <div class="middle-header-div">
       <div class="buy-sell-btn-div">
-        <button type="button" class="buyORsell active" value="sell">
+        <button
+          type="button"
+          class="buyORsell"
+          value="sell"
+          onclick="radioNone()"
+        >
           팝니다
         </button>
-        <button type="button" class="buyORsell" value="buy">삽니다</button>
+        <button
+          type="button"
+          class="buyORsell"
+          value="buy"
+          onclick="radioNone()"
+        >
+          삽니다
+        </button>
       </div>
-      <img src="svg_file/menu.svg" alt="메뉴 이미지" class="menu-icon" />
+      <img
+        src="svg_file/menu.svg"
+        alt="메뉴 이미지"
+        class="menu-icon"
+        onclick="categoryClick()"
+      />
     </div>
     <!--상품 컨테이너-->
     <div class="buy-container"></div>
@@ -60,17 +77,36 @@
           <div class="category-options">
             <label class="category-label"
               ><input
+                class="category-radio"
                 type="radio"
                 name="category"
                 value="jeongong"
-                checked
               />전공</label
             ><br />
             <label class="category-label"
-              ><input type="radio" name="category" value="gyoyang" />교양</label
+              ><input
+                class="category-radio"
+                type="radio"
+                name="category"
+                value="gyoyang"
+              />교양</label
             ><br />
             <label class="category-label"
-              ><input type="radio" name="category" value="jabhwa" />잡화</label
+              ><input
+                class="category-radio"
+                type="radio"
+                name="category"
+                value="jabhwa"
+              />잡화</label
+            ><br />
+            <label class="category-label"
+              ><input
+                class="category-radio"
+                type="radio"
+                name="category"
+                value="none"
+                checked
+              />미선택</label
             >
           </div>
         </div>

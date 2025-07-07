@@ -9,7 +9,7 @@
   <body>
     <div class="search-div">
       <img src="svg_file/search.svg" alt="돋보기 이미지" />
-      <input type="text" placeholder="검색" />
+      <input id="search-s" type="text" placeholder="검색" />
     </div>
     <div class="middle-header-div">
       <span id="search-span">최근 검색어</span>
@@ -17,11 +17,12 @@
         class="delete-icon"
         src="svg_file/delete-3.svg"
         alt="휴지통 아이콘"
+        onclick="deleteIcon()"
       />
     </div>
     <div class="center-div">
       <div class="search-log-div"></div>
-      <div class="visited-log-div"></div>
+      <div class="searched-div"></div>
     </div>
     <div
       class="registration-btn-div"
