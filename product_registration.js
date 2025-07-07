@@ -214,7 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
       isDirectTrade: isDirectTrade,
       ContactLink: contactLink,
       postType: postType,
-      postStatus: postStatus,
       introImgUrl: window.introImgUrl || imageURLs[0] || null,
       imgUrls: imageURLs,
     };
