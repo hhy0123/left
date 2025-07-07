@@ -25,8 +25,8 @@ async function submitEdit() {
       return;
     }
 
-    const response = await fetch("https://example.com/eushop/profile", {
-      method: "PUT", // 수정 요청임
+    const response = await fetch("https://likelion.lefteushop.work/eushop/profile", {
+      method: "PATCH", // 수정 요청임
       headers: {
         "Content-Type": "application/json",
         Authorization: accessToken, // 너는 Bearer 안붙이는걸로 했지?
@@ -63,7 +63,7 @@ async function submitEdit() {
 function logout() {
   localStorage.removeItem("accessToken");
 
-  fetch("https://example.com/eushop/logout", {
+  fetch("https://likelion.lefteushop.work/eushop/logout", {
     method: "POST",
     credentials: "include", // 쿠키 포함해서 서버에 요청
   })

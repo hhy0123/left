@@ -89,7 +89,7 @@ function checkPasswords() {
 
         const data = await response.json();
         alert(data.message || "회원가입 성공!");
-        window.location.href = "../login/login.html";
+        window.location.href = "/login/login.html";
 
     } catch (error) {
         alert("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
