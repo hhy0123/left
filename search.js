@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(
-        `https://likelion.lefteushop.work/eushop/list?keyword=${keyword}`
+        `https://leftlion.netlify.app//eushop/list?keyword=${keyword}`
       );
 
       if (!res.ok) {
@@ -100,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
       searchedDiv.innerHTML = "";
 
       if (!Array.isArray(data) || data.length === 0) {
-        searchedDiv.innerHTML = "<p>검색 결과가 없습니다.</p>";
+        searchedDiv.innerHTML =
+          "<p id='searched-none'>검색 결과가 없습니다.</p>";
         return;
       }
 

@@ -166,3 +166,13 @@
 .search-log-div {
   margin-bottom: 3.19rem;
 }
+
+#searched-none {
+  text-align: center;
+  color: #747474;
+  font-family: "Pretendard-Regular", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

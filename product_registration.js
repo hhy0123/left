@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageInput = document.getElementById("imageInput");
   const mainImage = document.getElementById("mainImage");
   const subImages = document.getElementById("subImages");
+  const accessToken = localStorage.getItem("accessToken");
 
   let imageURLs = [];
 
@@ -48,10 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(
-        "https://likelion.lefteushop.work/eushop/image/upload",
+        "https://leftlion.netlify.app//eushop/image/upload",
         {
           method: "POST",
-          body: formData,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: access,
+            body: JSON.stringify(formData),
+            credentials: "include",
+          },
         }
       );
 
