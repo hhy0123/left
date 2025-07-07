@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(JSON.stringify(postData, null, 2));
 
     // 6. fetch로 서버 전송
-    fetch("/eushop/posts/create", {
+    fetch("https://likelion.lefteushop.work/eushop/posts/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -278,9 +278,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // 성공 처리
         alert("✅ 게시글이 성공적으로 등록되었습니다!");
         console.log("서버 응답:", responseBody);
-
-        form.reset();
-        location.reload();
+        // 페이지 이동
+        window.location.href = "main.html";
       })
       .catch((err) => {
         console.error("전송 실패:", err);
