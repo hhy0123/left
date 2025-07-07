@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(`HTTP ${res.status} - ${errorBody.code}`);
       }
 
+      const result = await res.json();
       // 서버 응답 파싱
       imageURLs = result.imgUrls || [];
       window.introImgUrl = result.introImgUrl || null;
