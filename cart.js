@@ -12,7 +12,7 @@
     const postType = "sell"; // '팝니다' 게시글만 불러오기
 
     try {
-        const response = await fetch(`https://likelion.lefteushop.work/eushop/profile/myposts/${SELL}`, {
+        const response = await fetch(`https://likelion.lefteushop.work/eushop/prorile/myposts/${SELL}`, {
         method: "GET",
         headers: {
             access: accessToken,
@@ -47,6 +47,7 @@
         itemCard.className = "item-card";
         itemCard.innerHTML = `
         <div class="item-info">
+            <div class="item-image"></div>
             <div class="item-description">
             <p class="item-category">${category}</p>
             <p class="item-title">${title}</p>
