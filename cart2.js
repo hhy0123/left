@@ -12,7 +12,7 @@
 
     try {
         // 삽니다 게시글 목록 불러오기 (postType 자리에 'buying' 같은 게 들어가겠지)
-        const response = await fetch("https://likelion.lefteushop.work/eushop/prorile/myposts/${BUY}", {
+        const response = await fetch("https://likelion.lefteushop.work/eushop/prorile/myposts/BUY", {
         method: "GET",
         headers: {
             access: accessToken,
