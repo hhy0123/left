@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(
-        `https://leftlion.netlify.app//eushop/list?keyword=${keyword}`
+        `https://likelion.lefteushop.work/eushop/list?keyword=${keyword}`
       );
 
       if (!res.ok) {
