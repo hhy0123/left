@@ -11,7 +11,7 @@
     }
 
     try {
-        // 삽니다 게시글 목록 불러오기 (postType 자리에 'buying' 같은 게 들어가겠지)
+        // 삽니다 게시글 목록 불러오기
         const response = await fetch("https://likelion.lefteushop.work/eushop/prorile/myposts/BUY", {
         method: "GET",
         headers: {
@@ -53,7 +53,6 @@
         const itemActions = document.createElement("div");
         itemActions.className = "item-actions";
 
-        // 삽니다 상태 버튼 - 구매중/구매완료 (너가 구매완료 따로 처리한다고 했으니 여기선 그냥 구매중 버튼만)
         const buyingBtnText = status === "BOUGHT" ? "구매완료" : "구매중";
         const buyingBtnClass = status === "BOUGHT" ? "item-button sold" : "item-button active";
 
@@ -68,7 +67,6 @@
     });
     }
 
-    // 구매중 → 구매완료 버튼 클릭 (모달 띄움)
     function markAsBought(button, postId) {
     if (button.textContent.includes("구매완료")) return;
 
@@ -79,7 +77,6 @@
     document.getElementById("confirmModal").style.display = "flex";
     }
 
-    // 모달 확인 클릭 시 구매완료 상태 변경 PATCH 호출
     async function confirmOk() {
     if (!currentButton || !currentPostId) return;
 
@@ -118,12 +115,10 @@
     }
     }
 
-    // 모달 취소 클릭
     function confirmCancel() {
     closeModal();
     }
 
-    // 모달 닫기
     function closeModal() {
     document.getElementById("confirmModal").style.display = "none";
     currentButton = null;
@@ -162,6 +157,7 @@
 
         alert("게시글이 삭제되었습니다.");
 
+        // UI에서 제거
         const itemActions = button.parentElement;
         const itemCard = itemActions.previousElementSibling;
         itemCard.remove();
@@ -169,5 +165,40 @@
     } catch (error) {
         console.error("삭제 오류:", error);
         alert("게시글 삭제 중 오류가 발생했습니다.");
+    }
+    }
+
+    // 여기부터 추가: 게시글 수정 API 호출 함수
+    // updatedData는 수정할 필드들을 담은 객체
+    async function editPost(postId, updatedData) {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+        alert("로그인이 필요합니다.");
+        location.href = "login.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://likelion.lefteushop.work/eushop/edit/${postId}`, {
+        method: "PUT",
+        headers: {
+            access: accessToken,
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(updatedData),
+        });
+
+        if (!response.ok) {
+        const errData = await response.json();
+        alert("게시글 수정 실패: " + (errData.message || response.statusText));
+        return;
+        }
+
+        alert("게시글이 성공적으로 수정되었습니다.");
+        location.href = "main.html"; // 수정 완료 후 이동할 페이지
+    } catch (error) {
+        console.error("게시글 수정 오류:", error);
+        alert("게시글 수정 중 오류가 발생했습니다.");
     }
     }
