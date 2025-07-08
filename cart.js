@@ -9,10 +9,8 @@
         return;
     }
 
-    const postType = "sell"; // '팝니다' 게시글만 불러오기
-
     try {
-        const response = await fetch(`https://likelion.lefteushop.work/eushop/prorile/myposts/SELL`, {
+        const response = await fetch(`https://likelion.lefteushop.work/eushop/profile/myposts/SELL`, {
         method: "GET",
         headers: {
             access: accessToken,
@@ -42,7 +40,6 @@
         const isSelling = status === "SELLING";
         const statusText = isSelling ? "판매중" : "판매완료";
 
-        // 카드 생성
         const itemCard = document.createElement("div");
         itemCard.className = "item-card";
         itemCard.innerHTML = `
@@ -56,7 +53,6 @@
         </div>
         `;
 
-        // 버튼 영역 생성
         const itemActions = document.createElement("div");
         itemActions.className = "item-actions";
         itemActions.innerHTML = `
@@ -71,7 +67,7 @@
     }
 
     function markAsSold(button, postId, currentStatus) {
-    if (currentStatus !== "SELLING") return; // 이미 판매완료면 무시
+    if (currentStatus !== "SELLING") return;
 
     currentButton = button;
     currentPostId = postId;
@@ -173,9 +169,7 @@
     currentPostId = null;
     }
 
-
-    // 여기에 게시글 수정 함수 추가
-
+    // 게시글 수정 함수 (추후 prod_modify에서 호출됨)
     async function editPost(postId, updatedData) {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
@@ -205,14 +199,14 @@
         }
 
         alert("게시글이 성공적으로 수정되었습니다.");
-        location.href = "main.html"; // 수정 후 리다이렉트
+        location.href = "main.html";
     } catch (error) {
         console.error("게시글 수정 에러:", error);
         alert("게시글 수정 중 오류가 발생했습니다.");
     }
     }
 
-    // prod_modify.html에서 post_id 가져오는 함수 (참고용)
+    // 쿼리 파라미터에서 post_id 가져오기
     function getPostIdFromQuery() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get("post_id");
