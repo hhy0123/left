@@ -12,7 +12,7 @@
     const postType = "sell"; // '팝니다' 게시글만 불러오기
 
     try {
-        const response = await fetch(`https://likelion.lefteushop.work/eushop/profile/myposts/${postType}`, {
+        const response = await fetch(`https://likelion.lefteushop.work/eushop/profile/myposts/${SELL}`, {
         method: "GET",
         headers: {
             access: accessToken,
