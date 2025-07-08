@@ -42,7 +42,6 @@
         itemCard.className = "item-card";
         itemCard.innerHTML = `
         <div class="item-info">
-            <div class="item-image"></div>
             <div class="item-description">
             <p class="item-category">${category}</p>
             <p class="item-title">${title}</p>
