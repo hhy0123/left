@@ -202,3 +202,10 @@
   object-position: center;
   display: block;
 }
+.product-container {
+  margin-bottom: 5rem;
+  justify-content: space-between;
+  margin-top: 1.19rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
