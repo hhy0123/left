@@ -145,8 +145,6 @@
 }
 
 .product-container {
-  width: 10.375rem;
-  height: 11.75rem;
   border-radius: 0.8875rem;
   overflow: hidden;
 }
@@ -159,6 +157,8 @@
 }
 
 .product-image img {
+  width: 10.375rem;
+  height: 11.75rem;
   object-fit: cover; /* 핵심: 박스에 딱 맞게, 넘치는 부분은 잘림 */
   object-position: center;
   display: block;
