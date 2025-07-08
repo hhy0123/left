@@ -43,63 +43,93 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ✅ 초기 로딩 시 SELL 기준 렌더링
-  document.querySelector('.buyORsell[value="sell"]')?.classList.add("active");
+  // ocument.querySelector('.buyORsell[value="sell"]')?.classList.add("active");
   fetchEushopList();
 
-  function sellClick() {}
+  document.addEventListener("DOMContentLoaded", () => {
+    const buySellButtons = document.querySelectorAll(".buyORsell");
+    const categoryRadios = document.querySelectorAll(".category-radio");
 
-  async function loadProducts(type) {
-    const url = `https://likelion.lefteushop.work/eushop/list/type/${type.toUpperCase()}`;
-
-    // 컨테이너 가져오기
     const sellContainer = document.querySelector(".sell-container");
     const buyContainer = document.querySelector(".buy-container");
 
-    // 컨테이너 표시/숨김 처리
-    if (type === "sell") {
-      sellContainer.style.display = "block";
-      buyContainer.style.display = "none";
-    } else if (type === "buy") {
-      sellContainer.style.display = "none";
-      buyContainer.style.display = "block";
+    // 초기엔 둘 다 숨김
+    sellContainer.style.display = "none";
+    buyContainer.style.display = "none";
+
+    // 상품 HTML 생성 함수
+    function createProductHTML(data) {
+      return `
+      <div class="product-container">
+        <div class="product-image">
+          <img id="introImagId" src="${data.intro_img_url}" alt="상품 이미지" />
+        </div>
+        <div class="haggwa-div">
+          <p class="haggwa">${data.category}</p>
+          <img id="favorite-icon" src="svg_file/favorite_border.svg" alt="찜" />
+        </div>
+        <div class="product-info">
+          <p class="title">${data.title}</p>
+          <p class="price">${data.price}원</p>
+        </div>
+      </div>
+    `;
     }
 
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
-      const productList = await res.json();
+    // fetch 후 렌더링 함수
+    async function fetchAndRender(url, targetContainer) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
+        const productList = await res.json();
 
-      // 출력할 대상 컨테이너 선택
-      const container = type === "sell" ? sellContainer : buyContainer;
-      container.innerHTML = ""; // 기존 내용 제거
+        targetContainer.innerHTML = "";
+        productList.forEach((data) => {
+          const html = createProductHTML(data);
+          targetContainer.insertAdjacentHTML("beforeend", html);
+        });
+      } catch (err) {
+        console.error("데이터 불러오기 실패:", err.message);
+      }
+    }
 
-      // 상품 카드 렌더링
-      productList.forEach((data) => {
-        const productHTML = `
-          <div class="product-container">
-            <div class="product-image">
-              <img id="introImagId" src="${data.intro_img_url}" alt="상품 이미지" />
-            </div>
-            <div class="haggwa-div">
-              <p class="haggwa">${data.category}</p>
-              <img id="favorite-icon" src="svg_file/favorite_border.svg" alt="찜" />
-            </div>
-            <div class="product-info">
-              <p class="title">${data.title}</p>
-              <p class="price">${data.price}원</p>
-            </div>
-          </div>
-        `;
-        container.insertAdjacentHTML("beforeend", productHTML);
+    // postType 기반 버튼 클릭 처리
+    buySellButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const postType = btn.value.toUpperCase(); // SELL or BUY
+        const url = `https://likelion.lefteushop.work/eushop/list/type/${postType}`;
+
+        // 컨테이너 토글
+        if (postType === "SELL") {
+          sellContainer.style.display = "block";
+          buyContainer.style.display = "none";
+          fetchAndRender(url, sellContainer);
+        } else {
+          sellContainer.style.display = "none";
+          buyContainer.style.display = "block";
+          fetchAndRender(url, buyContainer);
+        }
       });
-    } catch (err) {
-      console.error("불러오기 실패:", err.message);
-    }
-  }
+    });
+
+    // category-radio 클릭 시 처리
+    categoryRadios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        const category = radio.value;
+        if (category === "none") return;
+
+        const url = `https://likelion.lefteushop.work/eushop/list/category/${category}`;
+        // 기본적으로 sellContainer에 출력 (필요 시 조건 분기 가능)
+        sellContainer.style.display = "block";
+        buyContainer.style.display = "none";
+        fetchAndRender(url, sellContainer);
+      });
+    });
+  });
 
   // 초기엔 둘 다 안 보이게 하고 싶다면 아래 추가
   window.addEventListener("DOMContentLoaded", () => {
-    // document.querySelector(".sell-container").style.display = "none";
+    document.querySelector(".sell-container").style.display = "none";
     document.querySelector(".buy-container").style.display = "none";
   });
 
