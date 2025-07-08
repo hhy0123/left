@@ -145,6 +145,8 @@
 }
 
 .product-container {
+  width: 10.375rem;
+  height: 11.75rem;
   border-radius: 0.8875rem;
   overflow: hidden;
 }
