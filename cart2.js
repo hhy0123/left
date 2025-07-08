@@ -12,7 +12,7 @@
 
     try {
         // 삽니다 게시글 목록 불러오기
-        const response = await fetch("https://likelion.lefteushop.work/eushop/profile/myposts/BUY", {
+        const response = await fetch("https://likelion.lefteushop.work/eushop/prorile/myposts/BUY", {
         method: "GET",
         headers: {
             access: accessToken,
@@ -36,7 +36,7 @@
     list.innerHTML = "";
 
     products.forEach((product) => {
-        const { id, category, title, price, status } = product;
+        const { post_id, category, title, price, status } = product;
 
         const itemCard = document.createElement("div");
         itemCard.className = "item-card";
@@ -53,14 +53,13 @@
         const itemActions = document.createElement("div");
         itemActions.className = "item-actions";
 
-        const isBought = status === "BOUGHT";
-        const buyingBtnText = isBought ? "구매완료" : "구매중";
-        const buyingBtnClass = isBought ? "item-button sold" : "item-button active";
+        const buyingBtnText = status === "BOUGHT" ? "구매완료" : "구매중";
+        const buyingBtnClass = status === "BOUGHT" ? "item-button sold" : "item-button active";
 
         itemActions.innerHTML = `
-        <button class="${buyingBtnClass}" onclick="markAsBought(this, ${id}, '${status}')">${buyingBtnText}</button>
-        <button class="item-button" onclick="modifyPost(${id})">게시글 수정</button>
-        <button class="item-button" onclick="deletePost(${id}, this)">삭제하기</button>
+        <button class="${buyingBtnClass}" onclick="markAsBought(this, ${post_id})">${buyingBtnText}</button>
+        <button class="item-button" onclick="modifyPost(${post_id})">게시글 수정</button>
+        <button class="item-button" onclick="deletePost(${post_id}, this)">삭제하기</button>
         `;
 
         list.appendChild(itemCard);
@@ -68,9 +67,8 @@
     });
     }
 
-    // 구매완료 상태로 변경 확인
-    function markAsBought(button, postId, status) {
-    if (status === "BOUGHT") return;
+    function markAsBought(button, postId) {
+    if (button.textContent.includes("구매완료")) return;
 
     currentButton = button;
     currentPostId = postId;
@@ -79,7 +77,6 @@
     document.getElementById("confirmModal").style.display = "flex";
     }
 
-    // 확인 모달에서 '확인' 버튼 클릭 시
     async function confirmOk() {
     if (!currentButton || !currentPostId) return;
 
@@ -91,24 +88,20 @@
     }
 
     try {
-        const response = await fetch(
-        `https://likelion.lefteushop.work/eushop/profile/myposts/${currentPostId}/toggle-status`,
-        {
-            method: "PATCH",
-            headers: {
-            access: accessToken,
+        const response = await fetch(`https://likelion.lefteushop.work/eushop/profile/myposts/${currentPostId}/toggle-status`, {
+        method: "PATCH",
+        headers: {
             "Content-Type": "application/json",
-            },
-            credentials: "include",
-        }
-        );
+            access: accessToken,
+        },
+        credentials: "include",
+        });
 
         if (!response.ok) {
         const errData = await response.json();
         throw new Error(errData.message || "상태 변경 실패");
         }
 
-        // 버튼 텍스트 및 스타일 변경
         currentButton.textContent = "구매완료";
         currentButton.classList.remove("active");
         currentButton.classList.add("sold");
@@ -122,7 +115,6 @@
     }
     }
 
-    // 모달 닫기
     function confirmCancel() {
     closeModal();
     }
@@ -176,7 +168,8 @@
     }
     }
 
-    // 게시글 수정 API (참고용)
+    // 여기부터 추가: 게시글 수정 API 호출 함수
+    // updatedData는 수정할 필드들을 담은 객체
     async function editPost(postId, updatedData) {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
@@ -203,7 +196,7 @@
         }
 
         alert("게시글이 성공적으로 수정되었습니다.");
-        location.href = "main.html";
+        location.href = "main.html"; // 수정 완료 후 이동할 페이지
     } catch (error) {
         console.error("게시글 수정 오류:", error);
         alert("게시글 수정 중 오류가 발생했습니다.");
