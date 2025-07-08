@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ✅ 초기 로딩 시 SELL 기준 렌더링
-  // ocument.querySelector('.buyORsell[value="sell"]')?.classList.add("active");
+  document.querySelector('.buyORsell[value="sell"]')?.classList.add("active");
   fetchEushopList();
 
   document.addEventListener("DOMContentLoaded", () => {
