@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let lastScrollY = window.scrollY;
 
-  // 스크롤 시 등록 버튼 숨김/보임
+  // ✅ 스크롤 시 등록 버튼 숨김/보임
   window.addEventListener("scroll", () => {
     const currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScrollY = currentScrollY;
   });
 
-  // 하단 네비게이션 active 전환
+  // ✅ 하단 네비게이션 active 전환
   navItems.forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 상품 HTML 생성
+  // ✅ 상품 HTML 생성 함수
   function createProductHTML(data) {
     return `
       <div class="product-container">
@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="price">${data.price}원</p>
         </div>
       </div>
-    `;
+    `.trim();
   }
 
-  // fetch 후 렌더링
+  // ✅ 서버에서 데이터 fetch 후 렌더링
   async function fetchAndRender(url, targetContainer) {
     try {
       const res = await fetch(url);
@@ -55,27 +55,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const productList = await res.json();
       targetContainer.innerHTML = "";
       productList.forEach((data) => {
-        targetContainer.insertAdjacentHTML("beforeend", createProductHTML(data));
+        targetContainer.insertAdjacentHTML(
+          "beforeend",
+          createProductHTML(data)
+        );
       });
     } catch (err) {
       console.error("데이터 불러오기 실패:", err.message);
     }
   }
 
-  // 현재 상태 기반으로 서버 fetch
+  // ✅ 현재 상태 기준으로 서버 fetch
   function fetchEushopList() {
     const activeBtn = document.querySelector(".buyORsell.active");
-    const selectedCategory = document.querySelector(".category-radio:checked")?.value;
+    const selectedCategory = document.querySelector(
+      ".category-radio:checked"
+    )?.value;
 
     if (!activeBtn && (!selectedCategory || selectedCategory === "none")) {
       console.log("선택된 거래유형과 카테고리가 없음");
       return;
     }
 
-    const postType = activeBtn?.value.toUpperCase(); // SELL 또는 BUY
+    const postType = activeBtn?.value.toUpperCase();
     const category = selectedCategory;
 
-    // 우선순위: 카테고리 선택이 있다면 그걸 우선함
     if (category && category !== "none") {
       const url = `https://likelion.lefteushop.work/eushop/list/category/${category}`;
       sellContainer.style.display = "block";
@@ -95,14 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 거래유형 버튼 클릭
+  // ✅ 거래유형 버튼 클릭 처리
   buySellButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       buySellButtons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
 
       // 카테고리 선택 해제
-      document.querySelectorAll(".category-radio").forEach((r) => {
+      categoryRadios.forEach((r) => {
         r.checked = r.value === "none";
       });
 
@@ -110,26 +114,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 카테고리 선택
+  // ✅ 카테고리 라디오 클릭 처리
   categoryRadios.forEach((radio) => {
     radio.addEventListener("change", () => {
-      // 거래유형 버튼 active 해제
       buySellButtons.forEach((btn) => btn.classList.remove("active"));
       fetchEushopList();
     });
   });
 
-  // 초기 상태 설정
-  document.querySelector('.buyORsell[value="SELL"]')?.classList.add("active");
-  document.querySelector('.category-radio[value="none"]')?.checked = true;
+  // ✅ 초기 로딩 상태
+  const defaultBtn = document.querySelector('.buyORsell[value="SELL"]');
+  if (defaultBtn) defaultBtn.classList.add("active");
+
+  const defaultCategory = document.querySelector(
+    '.category-radio[value="none"]'
+  );
+  if (defaultCategory) defaultCategory.checked = true;
+
   fetchEushopList();
 
-  // 외부에서 호출할 수 있는 함수 등록
+  // ✅ 외부에서 category 클릭 시 호출하는 함수
   window.categoryClick = function () {
     buySellButtons.forEach((btn) => btn.classList.remove("active"));
     console.log("카테고리 클릭됨: active 제거 완료");
   };
 
+  // ✅ 외부에서 카테고리 none으로 초기화하는 함수
   window.radioNone = function () {
     const radio = document.querySelector('input.category-radio[value="none"]');
     if (radio) {
